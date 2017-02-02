@@ -1,0 +1,36 @@
+{
+  "name": "heater-silo-m2m",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=staging node app/server.js",
+    "dev": "NODE_ENV=development nodemon app/server.js",
+    "prod": "NODE_ENV=production node app/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.1",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "cron": "^1.1.1",
+    "express": "^4.14.0",
+    "express-jwt": "^5.0.0",
+    "express-session": "^1.14.1",
+    "i18n": "^0.8.3",
+    "jsonwebtoken": "^7.1.9",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.1",
+    "multer": "^1.2.0",
+    "nodemailer": "^2.6.4",
+    "nodemailer-mailgun-transport": "^1.2.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "moment": "^2.15.2",
+    "nodemon": "^1.11.0"
+  }
+}

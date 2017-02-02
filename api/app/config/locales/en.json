@@ -1,0 +1,337 @@
+{
+	"common": {
+		"silo": "Silo",
+		"silos": "Silos",
+		"heater": "Heater",
+		"heaters": "Heaters",
+		"project": "Project",
+		"object": "Object",
+		"objects": "Objects"
+	},
+	"dayOfWeek": {
+		"monday": "Monday",
+		"tuesday": "Tuesday",
+		"wednesday": "Wednesday",
+		"thursday": "Thursday",
+		"friday": "Friday",
+		"saturday": "Saturday",
+		"sunday": "Sunday"
+	},
+	"date": {
+		"months": "Months",
+		"days": "Days",
+		"hours": "Hours",
+		"minutes": "Minutes",
+		"seconds": "Seconds"
+	},
+	"address": {
+		"country": "Country",
+		"town": "Town",
+		"streetNr": "Street/Nr",
+		"additionalLine": "Additional Line",
+		"zip": "Zip"
+	},
+	"admin": {
+		"config": "Config",
+		"logs": "Logs",
+		"statistics": "Statistics",
+		"users": "Users",
+		"company": "Company",
+		"adminUsers": "Admin Users",
+		"companies": "Companies",
+		"customers": "Customers",
+		"projects": "Projects",
+		"suppliers": "Suppliers",
+		"objects": "Objects",
+		"devices": "Devices",
+		"orders": "Orders/Delivery",
+		"delivery": "Delivery",
+		"all": "List",
+		"create": "Create",
+		"update": "Update",
+		"schedule": "Schedule"
+	},
+	"header": {
+		"home": "home",
+		"myAccount": "my account",
+		"dataCollection": "heater-data",
+		"login": "login",
+		"logout": "Log out",
+		"registration": "registration",
+		"employee": "employee",
+		"admin": "admin",
+		"superAdmin": "super admin",
+		"users": "users",
+		"projects": "projects",
+		"heaters": "heaters",
+		"silos": "silos",
+		"orders": "orders",
+		"demo": "demo",
+		"loggedin": "logged in as"
+	},
+	"logs": {
+		"name": "name",
+		"url": "url",
+		"method": "method",
+		"date": "date",
+		"type": "type"
+	},
+	"config": {
+		"email": "email",
+		"smtp": "smtp",
+		"host": "host",
+		"user": "user",
+		"pass": "pass"
+	},
+	"alert": {
+		"success": "Success!",
+		"updated": "Updated",
+		"created": "Created"
+	},
+	"user": {
+		"username": "User Name (Email)",
+		"password": "Password",
+		"confirmPassword": "Confirm Password",
+		"company": "Company",
+		"customer": "Customer",
+		"email": "Email",
+		"role": "Role",
+		"realName": "Real Name (First/Last)",
+		"phone": "Cell phone Number",
+		"preferredLanguage": "Preferred Language",
+		"forgot_password": "Forgot your password?",
+		"back_to_login": "Back to login page",
+		"forgot_title": "Please enter your User Name (Email)",
+		"reset_title": "Please enter your new Password",
+		"alert": {
+			"warning": "The email or password you have entered is invalid. Please try again.",
+			"warning_forgot": "The email you have entered is not known.",
+			"success_forgot": "Please check your email and click the secure link. If you don’t see our email, check your spam folder.",
+			"success_reset": "Password updated. Please re-login"
+		},
+		"validation": {
+			"password": "A password should be at least 6 characters long",
+			"confirm": "Passwords must match",
+			"customer": "Already assigned"
+		},
+		"settings": "Settings"
+	},
+	"permission": {
+		"name": "Action/Feature",
+		"infoHeater": "Heater information",
+		"read": "View",
+		"write": "Edit",
+		"projectsAll": "Projects (All)",
+		"projectsOwner": "Projects (Owner)",
+		"devices": "Devices",
+		"status": "Status",
+		"alarm": "Alarm",
+		"operatingHours": "Operating hours",
+		"ashLevel": "Ash level"
+	},
+	"company": {
+		"name": "Company Name",
+		"email": "Email",
+		"address": "Address",
+		"phone": "Phone",
+		"logo": "Logo image",
+		"maxSize": "File is too large (max 2Mb)",
+		"upload": "Upload company logo",
+		"daysOfWeek": "Office time on days of week",
+		"startTime": "Start office time",
+		"endTime": "End office time",
+		"reminderTime": "Reminder time for mail",
+		"reminderProjTime": "Reminder time for end of project",
+		"periodicServiceTime": "Periodic service time (hours)",
+		"operationsServiceTime": "Operations service time (hours)"
+	},
+	"customer": {
+		"name": "Company Name",
+		"address": "Address"
+	},
+	"device": {
+		"serial": "Unique ID",
+		"serialNr": "Serial-Nr. of Sensor",
+		"maxLoad": "Max load (ton)",
+		"fillingLevel": "Filling Level (ton)",
+		"fillingLevelPer": "Filling Level (%)",
+		"supplier": "Supplier",
+		"address": "Address",
+		"gps": "Gps",
+		"utilization": "Utilization",
+		"status": "Status",
+		"alert": "Alert",
+		"operationHours": "Operating hours",
+		"ashLevel": "Ash Level (%)",
+		"no_found": "Not found devices.",
+		"on": "On",
+		"off": "Off",
+		"yes": "Yes",
+		"no": "No",
+		"timeSiloEmpty": "Time when the silo is empty",
+		"messageFillingLevel50": "Send mail to Supplier. Filling Level < 50%",
+		"messageFillingLevel30": "Send mail to Supplier. Filling Level < 30%",
+		"confirmServicePeriodic": "Confirm Service Periodic",
+		"sendServicePeriodic": "Send Service Periodic",
+		"changeOperationHours": "Change Operation Hours",
+		"changeStatus": "Change Status",
+		"sendAlert": "Send Alert",
+		"confirmAlert": "Confirm Alert",
+		"servicePeriodic": "Need Service Periodic",
+		"serviceOperations": "Need Service Operations"
+	},
+	"statistics": {
+		"name": "Name",
+		"amountOfTons": "Amount of tons",
+		"operationHours": "Operating hours",
+		"days": "Days"
+	},
+	"object": {
+		"name": "Name",
+		"comment": "Comment",
+		"address": "Address",
+		"gps": "Gps",
+		"daysOfWeek": "Possible delivery time on days of week",
+		"numberOfDevices": "Number of devices",
+		"holiday": "Delivery on holidays"
+	},
+	"project": {
+		"name": "Name",
+		"description": "Description",
+		"objects": "Objects",
+		"silo": "Silo",
+		"heaters": "Heaters",
+		"startDate": "Start date",
+		"endDate": "End date",
+		"supplier": "Supplier",
+		"employee": "Employee",
+		"customer": "Customer",
+		"pm": "Project Manager",
+		"no_found": "Not found projects.",
+		"archive": "Archive",
+		"yes": "Yes",
+		"no": "No",
+		"toast": {
+			"name_exists": "Project name already exists",
+			"confirmEndProj": "End of project has been confirmed",
+			"prolongEndProj": "Mail has been sent for prolong the project"
+		}
+	},
+	"order": {
+		"id": "Id",
+		"order": "Order",
+		"number": "Number",
+		"supplier": "Supplier",
+		"createdAt": "Created date",
+		"plannedDeliveryAt": "Planned delivery date",
+		"deliveredAt": "Delivered date",
+		"amountOfTons": "Amount (t)",
+		"amountCHF": "Cost (CHF)",
+		"amountCHFPerTon": "CHF/t",
+		"status": "Status"
+	},
+	"button": {
+		"add": "add",
+		"add_record": "add record",
+		"autoFill": "Auto-fill",
+		"cancel": "cancel",
+		"copy": "copy",
+		"create": "create",
+		"edit": "edit",
+		"view": "view",
+		"login": "login",
+		"ok": "ok",
+		"refresh": "refresh",
+		"remove": "remove",
+		"save": "save",
+		"send": "send",
+		"update": "update",
+		"upload": "upload",
+		"confirm": "confirm",
+		"delivered": "delivered",
+		"prolong": "prolong"
+	},
+	"input": {
+		"pleaseSelect": "Please select ..."
+	},
+	"confirm": {
+		"removeItem": {
+			"title": "Are you sure to delete the record?",
+			"textContent": "Record will be deleted permanently."
+		},
+		"leavePage": {
+			"title": "Are you sure to leave this page without saving?",
+			"textContent": "Changes will be lost."
+		},
+		"adjustDuration": {
+			"title": "Do you want to adjust a duration of this object/project?",
+			"textContent": ""
+		}
+	},
+	"demo": {
+		"title": "Demo page"
+	},
+	"email": {
+		"forgot_password": {
+			"subject": "Password Reset",
+			"text": "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n Please click on the following link, or paste this into your browser to complete the process:\n\n {{ link }} If you did not request this, please ignore this email and your password will remain unchanged.\n"
+		},
+		"changed_password": {
+			"subject": "Your password has been changed",
+			"text": "Hello,\n\n This is a confirmation that the password for your account {{ username }} has just been changed."
+		},
+		"remind_silo": {
+			"subject": "Silo filling level",
+			"text": "Hello,\n\n Silo Unique ID: {{ serial }}\n Filling Level: {{ fillingLevel }} %.\n Address: {{ address }}\n Possible delivery time on days of week: {{ daysOfWeek }}, Delivery on holidays: {{ holiday }}\n Comment: {{ сomment }}\n Estimate date: {{ estimateDate }}\n\n"
+		},
+		"alert_heater": {
+			"subject": "Heater alert",
+			"text": "Hello,\n\n Heater Unique ID: {{ serial }}\n Address: {{ address }}\n\n"
+		},
+		"periodic_heater": {
+			"subject": "Heater periodic service",
+			"text": "Hello,\n\n Heater Unique ID: {{ serial }}\n Address: {{ address }}\n\n"
+		},
+		"operations_heater": {
+			"subject": "Heater operations service",
+			"text": "Hello,\n\n Heater Unique ID: {{ serial }}\n Address: {{ address }}\n\n"
+		},
+		"pm_remind_project": {
+			"subject": "Please confirm end of project or prolong the project",
+			"text": "Hello,\n\n Project name: {{ project }}\n Please confirm end of project or prolong the project: "
+		},
+		"pm_prolong_project": {
+			"subject": "Prolong the project",
+			"text": "Hello,\n\n Prolong the project: {{ project }} \n"
+		}
+	},
+	"schedule": {
+		"storage": "Storage",
+		"no_projects": "We have no active projects.",
+		"notUsed": "This device is not used in any projects",
+		"no_devices": "No available devices",
+		"from": "From",
+		"to": "To",
+		"scale": "Scale"
+	},
+	"validation": {
+		"name": "Already exists"
+	},
+	"logbook": {
+		"reason": "Reason",
+		"employees": "Employees",
+		"totalTime": "Total time",
+		"reasons": {
+			"assembly": "Assembly",
+			"disassembly": "Disassembly",
+			"planned_service": "Planned service",
+			"service_repair": "Service repair",
+			"alarm": "Alarm"
+		}
+	},
+	"http_error" : {
+		"404": "page not found",
+		"644": "permission denied"
+	},
+	"h:m": "h:m"
+}

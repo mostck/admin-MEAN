@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="heaterSiloM2M">
+<head>
+    <meta charset="UTF-8">
+    <title>Heater/Silo-M2M</title>
+    <base href="/">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Jockey+One">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+    <div ng-if="loading" layout="row" layout-sm="column" style="height: 100%;" layout-align="space-around center">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div ng-if="!loading" class="_main">
+        <div>
+<!-- ngInclude: 'app/header/header.html' -->
+<div class="_header" ng-controller="HeaderCtrl as vm">
+    <div class="container">
+        <div layout="row" layout-align="space-between start">
+            <div layout="column">
+            <a ng-if="vm.companyLogo" ui-sref="login" class="logo"><img ng-src="{{ vm.companyLogo }}" alt="Logo"></a>
+            </div>
+            <div layout="column" layout-align="end">
+              <navigation-bar></navigation-bar>
+              <span translate-cloak="" class="loggedin-message" ng-if="isLoggedIn">{{'header.loggedin' | translate}} {{vm.username}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ngInclude: 'app/header/header.html' -->
+</div>
+        <div ui-view=""></div>
+    </div>
+    <div ng-if="!loading">
+<!-- ngInclude: 'app/footer/footer.html' -->
+<div class="_footer" ng-controller="FooterCtrl as vm">
+    <div class="container">
+        <div class="row">
+            <div ng-if="vm.company" class="col-sm-3">
+                <span>Company: </span>
+                <span ng-bind="vm.company.name"></span>
+            </div>
+            <div ng-if="vm.company" class="col-sm-3">
+                <span>Email: </span>
+                <span ng-bind="vm.company.email"></span>
+            </div>
+            <div ng-if="vm.company" class="col-sm-3">
+                <span>Phone: </span>
+                <span ng-bind="vm.company.phone"></span>
+            </div>
+            <div class="col-sm-3">
+                <span>© Suter Entfeuchtungstechnik AG</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ngInclude: 'app/footer/footer.html' -->
+</div>
+</body>
+
+<script src="js/vendor.js" defer></script>
+<script src="js/index.js" defer></script>
+</html>

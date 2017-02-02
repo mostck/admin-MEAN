@@ -1,0 +1,337 @@
+{
+  "common": {
+    "silo": "Silo",
+    "silos": "Silos",
+    "heater": "Heizung",
+    "heaters": "Heizungen",
+    "project": "Projekt",
+    "object": "Objekt",
+    "objects": "Objekte"
+  },
+  "dayOfWeek": {
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag"
+  },
+  "date": {
+    "months": "Monat",
+    "days": "Tag",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "seconds": "Sekunden"
+  },
+  "address": {
+    "country": "Land",
+    "town": "Stadt",
+    "streetNr": "Strasse/Nr.",
+    "additionalLine": "Adresszusatz",
+    "zip": "PLZ"
+  },
+  "admin": {
+    "config": "Config",
+    "logs": "Logs",
+    "statistics": "Statistik",
+    "users": "Benutzer",
+    "company": "Firma",
+    "adminUsers": "Admin Benutzer",
+    "companies": "Firmen",
+    "customers": "Kunden",
+    "projects": "Projekt",
+    "suppliers": "Lieferanten",
+    "objects": "Objekte",
+    "devices": "Geräte",
+    "orders": "Bestellungen/Lieferungen",
+    "delivery": "Lieferungen",
+    "all": "Liste",
+    "create": "Neu",
+    "update": "Ändern",
+    "schedule": "Planen"
+  },
+  "header": {
+    "home": "home",
+    "myAccount": "Mein Konto",
+    "dataCollection": "Heizungsdaten",
+    "login": "Login",
+    "logout": "Logout",
+    "registration": "Registrieren",
+    "employee": "Mitarbeiter",
+    "admin": "Admin",
+    "superAdmin": "Superadmin",
+    "users": "Benutzer",
+    "projects": "Projekte",
+    "heaters": "Heizungen",
+    "silos": "Silos",
+    "orders": "Bestellungen",
+    "demo": "Demo",
+    "loggedin": "Eingeloggt als"
+  },
+  "logs": {
+    "name": "Name",
+    "url": "url",
+    "method": "Methode",
+    "date": "Datum",
+    "type": "Typ"
+  },
+  "config": {
+    "email": "email",
+    "smtp": "smtp",
+    "host": "host",
+    "user": "user",
+    "pass": "pass"
+  },
+  "alert": {
+    "success": "Erfolgreich!",
+    "updated": "Geändert",
+    "created": "Erstellt"
+  },
+  "user": {
+    "username": "Benutzername/Email",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "company": "Firma",
+    "customer": "Kunde",
+    "email": "Email",
+    "role": "Role",
+    "realName": "Name (Vor-/Nachname)",
+    "phone": "Handynummer",
+    "preferredLanguage": "Sprache",
+    "forgot_password": "Passwort vergessen?",
+    "back_to_login": "Zurück zur Login-Seite",
+    "forgot_title": "Bitte geben sie ihr Benutzername/ihre Email ein",
+    "reset_title": "Bitte geben sie ihr neues Passwort ein",
+    "alert": {
+      "warning": "Die eingegebene Emailadresse wurde nicht erkannt, versuchen sie's bitte nochamls.",
+      "success_forgot": "Bitte schauen sie in ihrem Postfach nach und klicken sie auf den sicheren Link. Sollten sie keine Email von sehen dann schauen sie bitte noch im Spam-Ordner",
+      "success_reset": "Passwort gändert. Bitte nochmals einloggen",
+      "warning_forgot": "Diese Email-Adresse ist leider unbekannt."
+    },
+    "validation": {
+      "password": "Ein Passwort sollte mindestens 6 Zeichen lang sein.",
+      "confirm": "Die Passwörter müssen identisch sein.",
+      "customer": "Bereits vergeben"
+    },
+    "settings": "Einstellungen"
+  },
+  "permission": {
+    "name": "Feature",
+    "infoHeater": "Heizungsinformation",
+    "read": "Anschauen",
+    "write": "Editieren",
+    "projectsAll": "Projekte (Alle)",
+    "projectsOwner": "Projekte (Besitzer)",
+    "devices": "Geräte",
+    "status": "Status",
+    "alarm": "Alarm",
+    "operatingHours": "Öffnungszeiten",
+    "ashLevel": "Ashe-Füllmenge"
+  },
+  "company": {
+    "name": "Firmenname",
+    "email": "Email",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "logo": "Logo",
+    "maxSize": "Datei zu gross (max 2Mb)",
+    "upload": "Firmenlogo uploaden",
+    "daysOfWeek": "Bürozeiten",
+    "startTime": "Start",
+    "endTime": "Ende",
+    "reminderTime": "Erinnerungszeit für das Email",
+    "reminderProjTime": "Erinnerungszeit für das Projektende",
+    "periodicServiceTime": "Periodische Wartungszeit (Stunden)",
+    "operationsServiceTime": "Betriebs-Wartungszeit (Stunden)"
+  },
+  "customer": {
+    "name": "Firmenname",
+    "address": "Address"
+  },
+  "device": {
+    "serial": "Eindeutige ID",
+    "serialNr": "Serienummer des Sensors",
+    "maxLoad": "Max Füllmenge (Tonnen)",
+    "fillingLevel": "Füllstand (Tonnen)",
+    "fillingLevelPer": "Füllstand (%)",
+    "supplier": "Lieferant",
+    "address": "Adresse",
+    "gps": "GPS",
+    "utilization": "Nutzung",
+    "status": "Status",
+    "alarm": "Alarm",
+    "operationHours": "Betriebsstunden (Datum/Std)",
+    "ashLevel": "Ashe-Füllmenge in %",
+    "no_found": "Geräte nicht gefunden.",
+    "on": "Ein",
+    "off": "Aus",
+    "yes": "Ja",
+    "no": "Nein",
+    "timeSiloEmpty": "Zeitpunkt wann das Silo leer sein wird",
+    "messageFillingLevel50": "Email an Lieferant. Füllstand < 50%",
+    "messageFillingLevel30": "Email an Lieferant. Füllstand < 30%",
+    "confirmServicePeriodic": "Periodische Wartungsarbeiten bestätigen",
+    "sendServicePeriodic": "Periodische Wartungsarbeiten senden",
+    "changeOperationHours": "Arbeitszeiten ändern",
+    "changeStatus": "Status ändern",
+    "sendAlert": "Alert senden",
+    "confirmAlert": "Alert bestätigen",
+    "servicePeriodic": "Periodische Wartungsarbeiten benötigt",
+    "serviceOperations": "Periodische Betriebswartung benötigt"
+  },
+  "statistics": {
+    "name": "Name",
+    "amountOfTons": "Tonnen",
+    "operationHours": "Betriebsstunden",
+    "days": "Tage"
+  },
+  "object": {
+    "name": "Name",
+    "comment": "Kommentar",
+    "address": "Adresse",
+    "gps": "GPS",
+    "daysOfWeek": "Lieferzeiten/Wochentage",
+    "numberOfDevices": "Anzahl Geräte",
+    "holiday": "Lieferung an Feiertagen"
+  },
+  "project": {
+    "name": "Name",
+    "description": "Beschreibung",
+    "objects": "Objekte",
+    "silo": "Silo",
+    "heaters": "Heizungen",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum",
+    "supplier": "Lieferant",
+    "employee": "Mitarbeiter",
+    "customer": "Kunde",
+    "pm": "Projektleiter",
+    "no_found": "Projekt nicht gefunden",
+    "archive": "Archiv",
+    "yes": "Ja",
+    "no": "Nein",
+    "toast": {
+      "name_exists": "Projektname existiert bereits",
+      "confirmEndProj": "Enddatum des Projektes wurde bestätigt",
+      "prolongEndProj": "Email um das Projekt zu verlängern wurde geschickt"
+    }
+  },
+  "order": {
+    "id": "Id",
+    "number": "Nummer",
+    "order": "Bestellung",
+    "supplier": "Lieferant",
+    "createdAt": "Erstellt am",
+    "plannedDeliveryAt": "Geplante Lieferung",
+    "deliveredAt": "Geliefert am",
+    "amountOfTons": "Tonnen",
+    "amountCHF": "Kosten (CHF)",
+    "amountCHFPerTon": "CHF/t",
+    "status": "Status"
+  },
+  "button": {
+    "add": "Neu",
+    "add_record": "Neuer Datensatz",
+    "autoFill": "Auto-fill",
+    "cancel": "Abbrechen",
+    "copy": "Kopieren",
+    "create": "Kreieren",
+    "edit": "Edit",
+    "view": "Ansehen",
+    "login": "Login",
+    "ok": "ok",
+    "refresh": "Erneuern",
+    "remove": "Löschen",
+    "save": "Sichern",
+    "send": "Senden",
+    "update": "Updaten",
+    "upload": "Hochladen",
+    "confirm": "Bestätigen",
+    "delivered": "Geliefert",
+    "prolong": "Verlängern"
+  },
+  "input": {
+    "pleaseSelect": "Bitte auswählen ..."
+  },
+  "confirm": {
+    "removeItem": {
+      "title": "Wollen sie diesen Datensatz wirklich löschen?",
+      "textContent": "Der Datensatz wird für immer gelöscht."
+    },
+    "leavePage": {
+      "title": "Sind sie sicher, dass sie diese Seite verlassen wollen? Es hat noch ungesicherte Änderungen.",
+      "textContent": "Die Änderungen werden verloren gehen."
+    },
+    "adjustDuration": {
+      "title": "Wollen sie die Zeitdauer des Objektes/Projektes ändern?",
+      "textContent": ""
+    }
+  },
+  "demo": {
+    "title": "Demo Seite"
+  },
+  "email": {
+    "forgot_password": {
+      "subject": "Password zurücksetzen",
+      "text": "Sie erhalten diese Email weil sie das Passwort ihres Kontos zurücksetzen wollen.\n\n Bitte klicken folgenden Link oder kopieren sie den Link in ihren Browser:\n\n {{ link }} Falls sie das Email nicht verlangt haben können sie es einfach ignorieren. Ihr Passwort bleibt unverändert.\n"
+    },
+    "changed_password": {
+      "subject": "Ihr Passwort wurde geändert",
+      "text": "Diese Email ist nur eine Bestätigung, dass ihr Passwort für das Konto {{ username }} geändert wurde."
+    },
+    "remind_silo": {
+      "subject": "Silo Füllstand",
+      "text": "Guten Tag, \n\n Silo: {{ serial }}\n Füllstand: {{ fillingLevel }} %.\n Adresse: {{ address }}\n Mögliche Anlieferzeiten an den Wochentagen: {{ daysOfWeek }}, Anlieferung an Feiertagen: {{ holiday }}\n Kommentar: {{ сomment }}\n Voraussichtliches Datum: {{ estimateDate }}\n\n"
+    },
+    "alert_heater": {
+      "subject": "Heizungsalarm",
+      "text": "Hello,\n\n Heizung: {{ serial }}\n Adresse: {{ address }}\n\n"
+    },
+    "periodic_heater": {
+      "subject": "Heizung periodische Wartung",
+      "text": "Hello,\n\n Heitung: {{ serial }}\n Adresse: {{ address }}\n\n"
+    },
+    "operations_heater": {
+      "subject": "Heizung Betreibsservice",
+      "text": "Hello,\n\n Heizung: {{ serial }}\n Adresse: {{ address }}\n\n"
+    },
+    "pm_remind_project": {
+      "subject": "Projekt verlängern oder Ende bestätigen",
+      "text": "Guten Tag,\n\n Projektname: {{ project }}\n Bitte bestätigen Sie das Ende des Projektes oder verlängern Sie den Endzeitpunkt: "
+    },
+    "pm_prolong_project": {
+      "subject": "Projekt verlängern",
+      "text": "Guten Tag,\n\n Das Projekt {{ project }} soll verlängert werden\n"
+    }
+  },
+  "schedule": {
+    "storage": "Lager",
+    "no_projects": "Wir haben keine aktive Projekte.",
+    "notUsed": "Diese Gerät wird z.Z. nicht verwendet",
+    "no_devices": "Keine verfügbare Geräte",
+    "from": "Von",
+    "to": "Bis",
+    "scale": "Skala"
+  },
+  "validation": {
+    "name": "Existiert bereits"
+  },
+  "logbook": {
+    "reason": "Grund",
+    "employees": "Mitarbeiter",
+    "totalTime": "Zeit Total",
+    "reasons" : {
+      "assembly": "Aufbau",
+      "disassembly": "Abbau",
+      "planned_service": "Geplanter Service",
+      "service_repair": "Reperatur",
+      "alarm": "Alarm"
+    }
+  },
+  "http_error" : {
+    "404": "Seite nicht gefunden",
+    "644": "Zugriff verweigert"
+  },
+  "h:m": "u:m"
+}
