@@ -1,0 +1,135 @@
+<ng-form name="projectForm">
+    <md-input-container class="md-block angular-animate">
+        <label>{{ 'project.name' | translate }}</label>
+        <input type="text" ng-model="vm.project.name" name="projectName" ng-model-options="{debounce: 500}" maxlength="100" required autofocus>
+        <div ng-messages="projectForm.projectName.$error">
+            <div ng-message="unique">
+                {{ 'validation.name' | translate }}
+            </div>
+        </div>
+    </md-input-container >
+    <md-input-container class="md-block">
+        <label>{{ 'project.description' | translate }}</label>
+        <input type="text" ng-model="vm.project.description">
+    </md-input-container >
+    <div layout="row">
+        <div flex="50">
+            <label>{{ 'project.startDate' | translate }} *</label>
+            <md-datepicker
+                    ng-required
+                    ng-model="vm.project.startDate"
+                    md-open-on-focus
+                    md-hide-icons='triangle'></md-datepicker>
+        </div>
+        <div flex="50">
+            <label>{{ 'project.endDate' | translate }} *</label>
+            <md-datepicker
+                    ng-required
+                    ng-model="vm.project.endDate"
+                    md-min-date="vm.project.startDate"
+                    md-open-on-focus
+                    md-hide-icons='triangle'></md-datepicker>
+        </div>
+    </div>
+    <hr>
+    <div layout="row">
+        <div layout-gt-sm="column" flex>
+            <div layout-gt-sm="row"  layout-align="start center">
+                <label>{{ 'project.employee' | translate }}</label>
+                <md-input-container flex="50">
+                    <md-select ng-model="vm.project.employee" placeholder="{{'input.pleaseSelect' | translate}}">
+                        <md-option ng-value="employee._id" ng-repeat="employee in vm.employees">{{employee.realName}} ({{employee.username}})</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout-gt-sm="column" flex>
+            <div layout-gt-sm="row" layout-align="start center">
+                <label>{{ 'project.customer' | translate }}</label>
+                <md-input-container flex="50">
+                    <md-select ng-model="vm.project.customer" placeholder="{{'input.pleaseSelect' | translate}}">
+                        <md-option ng-value="customer._id" ng-repeat="customer in vm.customers">{{customer.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <div layout-gt-sm="column" flex>
+            <div layout-gt-sm="row" layout-align="start center">
+                <label>{{ 'project.pm' | translate }}</label>
+                <md-input-container flex="50">
+                    <md-select ng-model="vm.project.pm" placeholder="{{'input.pleaseSelect' | translate}}" ng-disabled="!vm.project.customer">
+                        <md-option ng-if="vm.project.customer == pm.customer" ng-value="pm._id" ng-repeat="pm in vm.pms">{{pm.realName}} ({{pm.username}})</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div layout="row" layout-align="start center">
+        
+    <h3>{{ 'project.objects' | translate }}</h3>
+
+    <md-button class="md-fab md-mini"
+               md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+               ng-click="vm.createObjectDialog()"
+               title="{{ 'button.add' | translate }}">
+        <i class="fa fa-plus fa-2"></i>
+               </md-button>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>{{ 'object.name' | translate }}</th>
+                <th>{{ 'object.gps' | translate }}</th>
+                <th>{{ 'object.comment' | translate }}</th>
+                <th>{{ 'common.silos' | translate }}</th>
+                <th>{{ 'common.heaters' | translate }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="object in vm.project.objects">
+                <td>{{object.name}}</td>
+                <td>{{object.location.gps}}</td>
+                <td>{{object.comment}}</td>
+                <td>{{object.numberSilos}}</td>
+                <td>{{object.numberHeaters}}</td>
+                <td>
+                    <md-button 
+                        class="md-fab md-mini"
+                        md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                        ng-click="vm.updateObjectDialog(object)"
+                        title="{{ 'button.edit' | translate }}">
+                            <i class="fa fa-edit fa-2"></i>
+                        </md-button>
+                    <md-button
+                        class="md-fab md-mini md-warn"
+                        ng-click="vm.removeObject(object)"
+                        title="{{ 'button.remove' | translate }}">
+                            <i class="fa fa-remove fa-2"></i>
+                    </md-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <section layout-margin="3px" layout="row" class="schedule-container">
+        <project-schedule
+            flex
+            ng-if="vm.project"
+            data="vm.project">
+        </project-schedule>
+    </section>
+    <hr>
+    <md-button ng-disabled="projectForm.$error.required || !vm.changed"
+               class="md-raised"
+               md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+               ng-click="vm.saveProject()">
+       <span ng-if="vm.state==='copy'">{{ 'button.copy' | translate }}</span>
+       <span ng-if="vm.state==='create'">{{ 'button.create' | translate }}</span>
+       <span ng-if="vm.state==='update'">{{ 'button.save' | translate }}</span>
+    </md-button>
+</ng-form>

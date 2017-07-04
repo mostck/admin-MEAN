@@ -1,0 +1,51 @@
+<div class="container">
+    <section layout="row" layout-align="space-between" class="control-bar">
+        <div layout="row" layout-align="left center">
+            <md-input-container>
+                <label>{{'schedule.from'| translate}}</label>
+                <md-datepicker 
+                    ng-model="vm.options.fromDate"
+                    md-max-date="vm.options.toDate"
+                    md-open-on-focus
+                    md-hide-icons='triangle'
+                    aria-label="Start date range"></md-datepicker>
+            </md-input-container>
+            <md-input-container>
+                <label>{{'schedule.to'| translate}}</label>
+                <md-datepicker 
+                    ng-model="vm.options.toDate"
+                    md-min-date="vm.options.fromDate"
+                    md-open-on-focus
+                    md-hide-icons='triangle'
+                    aria-label="End date range"></md-datepicker>
+            </md-input-container>
+            <md-input-container class="scale-select">
+                <label>{{'schedule.scale'| translate}}</label>
+                <md-select 
+                    ng-model="vm.options.scale"
+                    aria-label="Scale">
+                        <md-option ng-repeat="scale in ['month', 'week', 'day']" ng-value="scale">{{scale | translate}}</md-option>
+                </md-select>
+                <div class="errors"></div>
+            </md-input-container>
+            <md-button ng-if="vm.project.reminderDate" ng-click="vm.resetChart()">Reset</md-button>
+        </div>
+    </section>
+    <section layout-margin="3px" layout="row" class="schedule-container">
+        <main-schedule
+            flex
+            allow-resizing="vm.allowResizing"
+            ng-if="vm.project"
+            data="vm.project"
+            options="vm.options">
+        </main-schedule>
+    </section>
+    <md-button ng-if="vm.project.reminderDate"
+               class="md-raised"
+               md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+               ng-click="vm.confirm()">{{ 'button.confirm' | translate }}</md-button>
+    <md-button ng-if="vm.project.reminderDate"
+               class="md-raised"
+               md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+               ng-click="vm.prolong()">{{ 'button.prolong' | translate }}</md-button>
+</div>

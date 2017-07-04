@@ -1,0 +1,28 @@
+<div class="_user">
+    <div class="container">
+        <div class="row">
+            <form ng-submit="vm.registerUser(vm.username, vm.email, vm.password, vm.companyId)">
+                <div class="form-group">
+                    <label>{{ 'user.username' | translate }}</label>
+                    <input class="form-control" type="text" ng-model="vm.username" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'user.email' | translate }}</label>
+                    <input class="form-control" type="email" ng-model="vm.email" ng-pattern="/^.+@.+\..+$/" required>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'user.company' | translate }}</label>
+                    <select ng-model='vm.companyId' ng-options='company._id as company.name for company in vm.getAllCompanies'></select>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'user.password' | translate }}</label>
+                    <input class="form-control" type="password" ng-model="vm.password" required>
+                </div>
+                <input class="button" type="submit" value="{{ 'button.send' | translate }}">
+            </form>
+            <div ng-if="vm.done" class="alert alert-success">
+                <strong>"{{ 'alert.success' | translate }}"</strong>
+            </div>
+        </div>
+    </div>
+</div>

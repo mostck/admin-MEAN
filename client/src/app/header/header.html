@@ -1,0 +1,13 @@
+<div class="_header" ng-controller="HeaderCtrl as vm">
+    <div class="container">
+        <div layout="row" layout-align="space-between start">
+            <div layout="column">
+            <a ng-if="vm.companyLogo" ui-sref="login" class="logo"><img ng-src="{{ vm.companyLogo }}" alt="Logo"></a>
+            </div>
+            <div layout="column" layout-align="end">
+              <navigation-bar></navigation-bar>
+              <span translate-cloak class="loggedin-message" ng-if="isLoggedIn">{{'header.loggedin' | translate}} {{vm.username}}</span>
+            </div>
+        </div>
+    </div>
+</div>

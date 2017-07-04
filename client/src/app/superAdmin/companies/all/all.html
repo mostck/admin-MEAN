@@ -1,0 +1,26 @@
+<md-table-container>
+    <table md-table>
+        <thead md-head md-order="vm.query.order">
+            <tr md-row>
+                <th md-column md-order-by="name">{{ 'company.name' | translate }}</th>
+                <th md-column md-order-by="email">{{ 'company.email' | translate }}</th>
+                <th md-column md-order-by="phone">{{ 'company.phone' | translate }}</th>
+                <th md-column>{{ 'company.logo' | translate }}</th>
+                <th md-column></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-repeat="company in vm.getAllCompanies | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                <td md-cell>{{company.name}}</td>
+                <td md-cell>{{company.email}}</td>
+                <td md-cell>{{company.phone}}</td>
+                <td md-cell><img style="width:100px; margin: 10px;" ng-show="!!company.logo" ngf-thumbnail="company.logo"/></td>
+                <td md-cell>
+                    <md-button class="md-fab md-mini" md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}" ng-click="vm.update(company._id)" title="{{ 'button.update' | translate }}"><i class="fa fa-edit fa-2"></i></md-button>
+                    <md-button class="md-fab md-mini md-warn" ng-click="vm.remove(company)" title="{{ 'button.remove' | translate }}"><i class="fa fa-remove fa-2"></i></md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
+<md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.getAllCompanies.length }}" md-page-select></md-table-pagination>

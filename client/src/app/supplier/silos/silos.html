@@ -1,0 +1,57 @@
+<div class="container">
+    <md-table-container>
+        <h1>Silos</h1>
+        <table md-table>
+            <thead md-head md-order="vm.querySilos.order">
+                <tr md-row>
+                    <th md-column md-order-by="serial">{{ 'device.serial' | translate }}</th>
+                    <th md-column>{{ 'device.address' | translate }}</th>
+                    <th md-column>{{ 'device.maxLoad' | translate }}</th>
+                    <th md-column md-order-by="fillingLevel">{{ 'device.fillingLevel' | translate }}</th>
+                    <th md-column>{{ 'device.fillingLevelPer' | translate }}</th>
+                    <th md-column></th>
+                </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat-start="silo in vm.getAllSilos | orderBy: vm.querySilos.order | limitTo: vm.querySilos.limit : (vm.querySilos.page -1) * vm.querySilos.limit">
+                    <td md-cell>{{silo.serial}}</td>
+                    <td md-cell>
+                        <span>{{silo.object.location.address.country}}</span>
+                        <span>{{silo.object.location.address.town}}</span>
+                        <span>{{silo.object.location.address.streetNr}}</span>
+                        <span>{{silo.object.location.address.zip}}</span>
+                    </td>
+                    <td md-cell>{{silo.maxLoad}}</td>
+                    <td md-cell>{{silo.fillingLevel}}</td>
+                    <td md-cell ng-init="silo.percent = silo.fillingLevel/silo.maxLoad*100">
+                        <div class="meter">
+                            <span  style="width: {{silo.percent}}%" ng-class="{ full: silo.percent == 100, orange: silo.percent < 50 && silo.percent >= 30, red: silo.percent < 30 }"></span>
+                        </div>
+                    </td>
+                    <td md-cell>
+                        <md-button class="md-fab md-mini" md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}" ng-click="vm.viewSilo(silo)" title="{{ 'button.view' | translate }}"><i class="fa fa-info fa-2"></i></md-button>
+                    </td>
+                </tr>
+                <tr md-row ng-repeat-end ng-if="silo.orders && silo.orders.length > 0">
+                    <td md-cell colspan="8" style="border-top: none">
+                        <div ng-repeat="order in silo.orders" class="silo-order">
+                            <span>{{ 'order.createdAt' | translate }}: </span>
+                            <span>{{order.createdAt | date: vm.dateFormat}}, </span>
+                            <span ng-if="order.plannedDeliveryAt">{{ 'order.plannedDeliveryAt' | translate }}: </span>
+                            <span ng-if="order.plannedDeliveryAt">{{order.plannedDeliveryAt | date: vm.dateFormat}}, </span>
+                            <!--<span>{{ 'order.deliveredAt' | translate }}: </span>-->
+                            <!--<span>{{order.deliveredAt | date: vm.dateFormat}}, </span>-->
+                            <span>{{ 'order.amountOfTons' | translate }}: </span>
+                            <span>{{order.amountOfTons}}, </span>
+                            <span>{{ 'order.supplier' | translate }}: </span>
+                            <span>{{order.supplier.companyName}}</span>
+                            <!--<span>{{ 'order.status' | translate }}: </span>-->
+                            <!--<span>{{order.status}}</span>-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-limit="vm.querySilos.limit" md-page="vm.querySilos.page" md-total="{{ vm.getAllSilos.length }}" md-page-select></md-table-pagination>
+</div>

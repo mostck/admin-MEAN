@@ -1,0 +1,54 @@
+
+<div layout="row">
+    <div flex="33" flex-gt-sm="25">
+        <label>{{ 'common.project' | translate }}</label>
+        <md-input-container>
+            <md-select ng-model="vm.chosenProject" ng-change="vm.changeProject()" placeholder="{{ 'input.pleaseSelect' | translate }}">
+                <md-option ng-value="null">all</md-option>
+                <md-option ng-value="project" ng-repeat="project in vm.projects">{{project.name}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex="33" flex-gt-sm="25">
+        <label>{{ 'common.object' | translate }}</label>
+        <md-input-container>
+            <md-select ng-disabled="!vm.chosenProject" ng-model="vm.chosenObject" ng-change="vm.changeObject()" placeholder="{{ 'input.pleaseSelect' | translate }}">
+                <md-option ng-value="null">all</md-option>
+                <md-option ng-value="object" ng-repeat="object in vm.chosenProject.objects">{{object.name}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div flex="33" flex-gt-sm="50">
+        <md-button class="md-fab md-mini btn-excel"
+                   md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}"
+                   ng-csv="vm.export"
+                   csv-header="['Name', 'Amount Of Tons', 'Operation Hours', 'Days']"
+                   filename="{{ vm.chosenObject ? vm.chosenObject.name : vm.chosenProject ? vm.chosenProject.name : 'projects' }}_statistics.csv"
+                   title="{{ 'button.export' | translate }}">
+            <i class="fa fa-file-excel-o fa-2"></i>
+        </md-button>
+    </div>
+</div>
+<md-table-container>
+    <table md-table>
+        <thead md-head>
+        <tr md-row>
+            <th md-column>{{ 'statistics.name' | translate }}</th>
+            <th md-column>{{ 'statistics.amountOfTons' | translate }}</th>
+            <th md-column>{{ 'statistics.operationHours' | translate }}</th>
+            <th md-column>{{ 'statistics.days' | translate }}</th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row ng-repeat="statistic in vm.statistics">
+            <td md-cell>{{statistic.name}}</td>
+            <td md-cell>{{statistic.amountOfTons}}</td>
+            <td md-cell>{{statistic.operationHours}}</td>
+            <td md-cell>{{statistic.days}}</td>
+        </tr>
+        </tbody>
+    </table>
+</md-table-container>
+
+
+<div ng-if="vm.myChartObject.data" google-chart chart="vm.myChartObject" style="height:600px; width:100%;"></div>

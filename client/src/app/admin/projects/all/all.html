@@ -1,0 +1,32 @@
+<md-table-container>
+    <table md-table>
+        <thead md-head md-order="vm.query.order">
+            <tr md-row>
+                <th md-column md-order-by="name">{{ 'project.name' | translate }}</th>
+                <th md-column md-order-by="startDate">{{ 'project.startDate' | translate }}</th>
+                <th md-column md-order-by="endDate">{{ 'project.endDate' | translate }}</th>
+                <th md-column md-order-by="archive">{{ 'project.archive' | translate }}</th>
+                <th md-column></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr ng-if="!vm.permissionRead || project.permissionRead" md-row ng-repeat="project in vm.projects | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                <td md-cell>{{project.name}}</td>
+                <td md-cell>{{project.startDate | date: 'dd/MM/yyyy'}}</td>
+                <td md-cell>{{project.endDate | date: 'dd/MM/yyyy'}}</td>
+                <td md-cell>
+                    <span ng-if="project.archive" class="round-box">{{ 'project.yes' | translate }}</span>
+                    <span ng-if="!project.archive" class="round-box statusOn">{{ 'project.no' | translate }}</span>
+                </td>
+                <td md-cell>
+                    <div class="actions">
+                        <md-button ng-if="!vm.permissionWrite || project.permissionWrite" class="md-fab md-mini" md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}" ng-click="vm.copy(project._id)" title="{{ 'button.copy' | translate }}"><i class="fa fa-copy fa-2"></i></md-button>
+                        <md-button ng-if="!vm.permissionWrite || project.permissionWrite" class="md-fab md-mini" md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}" ng-click="vm.update(project._id)" title="{{ 'button.update' | translate }}"><i class="fa fa-edit fa-2"></i></md-button>
+                        <md-button ng-if="!vm.permissionWrite || project.permissionWrite" class="md-fab md-mini md-warn" ng-click="vm.remove(project)" title="{{ 'button.remove' | translate }}"><i class="fa fa-remove fa-2"></i></md-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
+<md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.projects.length }}" md-page-select></md-table-pagination>

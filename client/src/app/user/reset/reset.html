@@ -1,0 +1,26 @@
+<div class="_user">
+    <div class="container">
+        <div layout="row" layout-align="center">
+            <ng-form name="resetForm" layout="column" flex="100" flex-gt-sm="33">
+                <h3>{{ 'user.reset_title' | translate }}</h3>
+                <md-input-container>
+                    <label>{{ 'user.password' | translate }}</label>
+                    <input name="password" type="password" ng-model="vm.password" required pattern=".{6,}">
+                    <div ng-messages="resetForm.password.$error">
+                        <div ng-message="pattern">{{ 'user.validation.password' | translate }}</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>{{ 'user.confirmPassword' | translate }}</label>
+                    <input name="confirmPassword" type="password" ng-model="vm.confirmPassword" required ng-pattern="vm.getPattern()">
+                    <div ng-messages="resetForm.confirmPassword.$error">
+                        <div ng-message="pattern">{{ 'user.validation.confirm' | translate }}</div>
+                    </div>
+                </md-input-container>
+                <md-button ng-disabled="resetForm.$invalid"
+                           class="md-raised" md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                           ng-click="vm.resetUser(vm.password)">{{ 'button.confirm' | translate }}</md-button>
+            </ng-form>
+        </div>
+    </div>
+</div>

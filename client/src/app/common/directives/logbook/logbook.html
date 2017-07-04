@@ -1,0 +1,54 @@
+<md-table-container layout="row" layout-margin="5px">
+    <div flex>
+        <div layout="row">
+            <h3>Logbook</h3>
+            <md-button 
+                class="md-fab md-mini"
+                md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                ng-click="vm.addCRURecord()"
+                title="{{ 'button.add_record' | translate }}">
+                    <i class="fa fa-plus fa-2"></i>
+            </md-button>
+        </div>
+        <table md-table>
+            <thead md-head md-order="vm.query.order">
+            <tr md-row>
+                <th md-column md-order-by="startDate" style="width: 158px;">{{ 'project.startDate' | translate }}</th>
+                <th md-column md-order-by="endDate" style="width: 148px;">{{ 'project.endDate' | translate }}</th>
+                <th md-column md-order-by="totalTime">{{ 'logbook.totalTime' | translate }} ({{'h:m' | translate}})</th>
+                <th md-column md-order-by="reason">{{ 'logbook.reason' | translate }}</th>
+                <!-- <th md-column >{{ 'logbook.employees' | translate }}</th> -->
+                <th md-column >{{ 'object.comment' | translate }}</th>
+                <th md-column style="width: 136px;"></th>
+                
+            </tr>
+            </thead>
+            <tbody md-body>
+                <tr md-row ng-repeat="record in vm.records | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                    <td md-cell>{{ record.startDate | date: vm.dateFormat }} </td>
+                    <td md-cell>{{ record.endDate | date: vm.dateFormat }}</td>
+                    <td md-cell>{{ record.totalTime | duration: 'm' : 'HH:mm' }}</td>
+                    <td md-cell>{{ 'logbook.reasons.' + record.reason | translate}}</td>
+<!--                     <td md-cell>
+                        <span ng-repeat="employee in record.employees">{{employee.username}}, </span></td> -->
+                    <td md-cell>{{ record.comment | limitTo: 100}}{{record.comment.length > 100 ? '...' : ''}}</td>
+                    <td md-cell>
+                        <div class="actions">
+                            <md-button 
+                                class="md-fab md-mini" 
+                                md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}" ng-click="vm.editCRURecord(record)" title="{{ 'button.update' | translate }}"><i class="fa fa-edit fa-2"></i></md-button>
+                            <md-button 
+                                class="md-fab md-mini"
+                                md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}"
+                                ng-click="vm.viewCRURecord(record)"
+                                title="{{ 'button.view' | translate }}">
+                                    <i class="fa fa-info fa-2"></i>
+                            </md-button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</md-table-container>
+<md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.records.length }}" md-page-select></md-table-pagination>

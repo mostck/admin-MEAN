@@ -1,0 +1,36 @@
+<div class="container">
+    <md-table-container>
+        <table md-table>
+            <thead md-head md-order="vm.query.order">
+            <tr md-row>
+                <th md-column md-order-by="id">{{ 'order.number' | translate }}</th>
+                <th md-column md-order-by="supplier">{{ 'order.supplier' | translate }}</th>
+                <th md-column md-order-by="silo">{{ 'common.silo' | translate }}</th>
+                <th md-column>{{ 'order.amountOfTons' | translate }}</th>
+                <th md-column>{{ 'order.amountCHF' | translate }}</th>
+                <th md-column>{{ 'order.amountCHFPerTon' | translate }}</th>
+                <th md-column md-order-by="status">{{ 'order.status' | translate }}</th>
+                <th md-column></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-repeat="order in vm.orders | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                <td md-cell><span style="text-overflow: ellipsis; overflow: hidden; width: 100px; display: block;" title="{{order.number || order._id}}">{{order.number || order._id}}</span></td>
+                <td md-cell>{{order.supplier.companyName}}</td>
+                <td md-cell>{{order.silo.serial}}</td>
+
+                <td md-cell>{{order.amountOfTons}}</td>
+                <td md-cell>{{order.amountCHF}}</td>
+                <td md-cell>{{order.amountCHF / order.amountOfTons || null}}</td>
+                <td md-cell>{{order.status}}</td>
+                <td md-cell>
+                    <md-button class="md-fab md-mini" md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}" ui-sref="supplier.order({id: order._id})" title="{{ 'button.view' | translate }}">
+                        <i class="fa fa-info fa-2"></i>
+                    </md-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+    <md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.orders.length }}" md-page-select></md-table-pagination>
+</div>

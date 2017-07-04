@@ -1,0 +1,47 @@
+
+<div layout="row">
+    <div flex="33" flex-gt-sm="25">
+        <label>{{ 'project.startDate' | translate }}</label>
+        <md-datepicker
+                ng-model="vm.startDate"
+                ng-change="vm.getBySupplier()"
+                md-open-on-focus
+                md-hide-icons='triangle'></md-datepicker>
+    </div>
+    <div flex="33" flex-gt-sm="25">
+        <label>{{ 'project.endDate' | translate }}</label>
+        <md-datepicker
+                ng-model="vm.endDate"
+                ng-change="vm.getBySupplier()"
+                md-open-on-focus
+                md-hide-icons='triangle'></md-datepicker>
+    </div>
+    <div flex="33" flex-gt-sm="50">
+        <md-button class="md-fab md-mini btn-excel"
+                   md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}"
+                   ng-csv="vm.export" filename="suppliers_statistics.csv"
+                   csv-header="['Company Name', 'Amount Of Tons']"
+                   title="{{ 'button.export' | translate }}">
+            <i class="fa fa-file-excel-o fa-2"></i>
+        </md-button>
+    </div>
+</div>
+<md-table-container>
+    <table md-table>
+        <thead md-head>
+        <tr md-row>
+            <th md-column>{{ 'statistics.name' | translate }}</th>
+            <th md-column>{{ 'statistics.amountOfTons' | translate }}</th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row ng-repeat="statistic in vm.statistics">
+            <td md-cell>{{statistic.supplier.companyName}}</td>
+            <td md-cell>{{statistic.amountOfTons}}</td>
+        </tr>
+        </tbody>
+    </table>
+</md-table-container>
+
+
+<div ng-if="vm.myChartObject.data" google-chart chart="vm.myChartObject" style="height:600px; width:100%;"></div>

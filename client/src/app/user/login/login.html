@@ -1,0 +1,33 @@
+<div class="_user">
+    <div class="container">
+        <div layout="row" layout-align="center" >
+            <img class="main-logo" src="assets/images/logo.png" alt="logo">
+        </div>
+        <div layout="row" layout-align="center" >
+            <form name="loginForm" layout="column" flex="100" flex-gt-sm="33" ng-submit="vm.loginUser(vm.login, vm.password)">
+                <md-input-container>
+                    <label>{{ 'user.username' | translate }}</label>
+                    <input type="email" name="login-username" ng-model="vm.login" required md-autofocus>
+                </md-input-container>
+                <md-input-container>
+                    <input type="password" name="login-password" ng-model="vm.password" required>
+                    <label>{{ 'user.password' | translate }}</label>
+                </md-input-container>
+                <md-button ng-disabled="loginForm.$invalid" class="md-primary" type="submit">{{ 'button.login' | translate }}</md-button>
+                <a ui-sref="forgot"><small>{{ 'user.forgot_password' | translate }}</small></a>
+            </form>
+        </div>
+        <div layout="row" layout-align="center" >
+            <div layout="column" flex="100" flex-gt-sm="33" ng-if="vm.warning" class="alert alert-warning">
+                <strong>{{ 'user.alert.warning' | translate }}</strong>
+            </div>
+        </div>
+        <hr>
+        <div layout="column" class="alert alert-info">
+            <strong>Hint:</strong>
+            <p>superadmin@mail.com / superadmin</p>
+            <p>adminsuter@mail.com / adminsuter</p>
+            <p>usersuter@mail.com / usersuter</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+main-nav-bar {
+  .row {
+    border-top: 5px solid $tertiaryColor;
+  }
+  .nav {
+    > li {
+      border-top: 5px solid $tertiaryColor;
+      margin-top: -5px;
+      &.active {
+        border-color: $secondaryColor;
+        a {
+          color: $secondaryColor;
+        }
+      }
+      // &:focus,  &:hover {
+      //   // border-color: $secondaryColor;
+      // }
+      > a {
+        font-size: 24px;
+        color: $primaryColor;
+        font-family: $secondaryFontFamily;
+        &:focus {
+          color: $secondaryColor;
+          background-color: inherit;
+          outline: none;
+        }
+        &:hover {
+          color: $secondaryColor;
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}

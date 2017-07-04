@@ -1,0 +1,72 @@
+<div class="container">
+    <div layout="row">
+        <div flex="50">
+            <h3>{{ 'order.order' | translate }} #: {{ vm.order.number || vm.order._id }}</h3>
+        </div>
+        <div flex="50">
+            <h3>{{ 'order.status' | translate }}: {{ vm.order.status }}</h3>
+        </div>
+    </div>
+    <hr>
+    <form name="orderForm">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{ 'order.createdAt' | translate }}</label>
+                <md-datepicker
+                        ng-disabled="true"
+                        ng-model="vm.order.createdAt"
+                        md-open-on-focus
+                        md-hide-icons='triangle'></md-datepicker>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{ 'order.plannedDeliveryAt' | translate }}</label>
+                <md-datepicker
+                        ng-disabled="vm.order.status != 'open'"
+                        ng-model="vm.order.plannedDeliveryAt"
+                        md-open-on-focus
+                        md-hide-icons='triangle'></md-datepicker>
+            </md-input-container>
+            <md-input-container ng-if="vm.order.status != 'open'" class="md-block" flex-gt-xs>
+                <label>{{ 'order.deliveredAt' | translate }}</label>
+                <md-datepicker
+                        required=""
+                        ng-disabled="vm.order.status == 'delivered'"
+                        ng-model="vm.order.deliveredAt"
+                        md-open-on-focus
+                        md-hide-icons='triangle'></md-datepicker>
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{ 'order.amountOfTons' | translate }}</label>
+                <input required="" ng-model="vm.order.amountOfTons">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{ 'order.amountCHFPerTon' | translate }}</label>
+                <input required="" ng-model="vm.order.amountCHFPerTon" ng-change="vm.changeCHFPerTon()">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>{{ 'order.amountCHF' | translate }}</label>
+                <input required="" ng-model="vm.order.amountCHF" ng-change="vm.changeCHF()">
+            </md-input-container>
+        </div>
+
+        <hr>
+        <md-button ng-if="vm.order.status == 'open'"
+                   ng-disabled="orderForm.$invalid"
+                   ng-click="vm.confirmed(vm.order)"
+                   class="md-raised"
+                   md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}">
+            {{ 'button.confirm' | translate }}
+        </md-button>
+        <md-button ng-if="vm.order.status == 'confirmed'"
+                   ng-disabled="orderForm.$invalid"
+                   ng-click="vm.delivered(vm.order)"
+                   class="md-raised"
+                   md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}">
+            {{ 'button.delivered' | translate }}
+        </md-button>
+    </form>
+</div>
+
+

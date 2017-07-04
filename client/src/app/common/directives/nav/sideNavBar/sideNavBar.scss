@@ -1,0 +1,30 @@
+side-nav-bar .nav.nav-stacked,
+.nav.nav-stacked.submenu {
+  > li {
+    &.active {
+      a {
+        color: $secondaryColor;
+      }
+    }
+    > a {
+      font-size: 20px;
+      color: $primaryColor;
+      font-family: $secondaryFontFamily;
+      &:focus {
+        color: $secondaryColor;
+        background-color: inherit;
+        outline: none;
+      }
+      &:hover {
+        color: $secondaryColor;
+        background-color: inherit;
+      }
+    }
+    &::before {
+      content: ">";
+      position: absolute;
+      top: 15px;
+      color: $secondaryColor;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+._footer {
+  // height: 80px;
+  margin-top: 20px;
+
+  .row {
+    border-top: 5px solid $tertiaryColor;
+    padding-top: 10px;
+    p {
+      padding: 15px;
+      text-align: right;
+      margin: 0px;
+    }
+  }
+
+  .footer_block {
+    background-color: $primaryColor;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin-top: 40px;
+  }
+}

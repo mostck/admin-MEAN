@@ -1,0 +1,29 @@
+<div class="_navigationBar" layout="row">
+    
+    <ul class="nav navbar-nav navbar-right">
+        <!--<select class="selectpicker" ng-model="locale" ng-click="changeLanguage(locale)">-->
+            <!--<option value="en">EN</option>-->
+            <!--<option value="de">DE</option>-->
+        <!--</select>-->
+        <li ng-show="isLoggedIn" ng-repeat="bar in navBar" ng-if="bar.value && !bar.permission" ui-sref-active="active">
+          <a ui-sref="{{ bar.sref }}">{{ bar.value | translate }}</a>
+          <submenu ng-if="bar.submenu" items="bar.submenu"></submenu>
+        </li>
+        <li ng-class="{show: isOpen}">
+            <!-- <div  ng-click="isOpen = !isOpen" class="flag flag-{{currentLocale}}" ng-click="changeLanguage(locale)" alt="{{locale}}"><div> -->
+            <a href="#" class="flag flag-{{currentLocale}}" ng-click="showSwitcherHandler()"></a>
+            <ul class="nav nav-stacked select">
+                <li ng-repeat="(locale, abbr) in locales"
+                    ng-class="no-animate"
+                    ng-if="locale !== currentLocale">
+                    <div class="flag flag-{{locale}}" ng-click="changeLanguage(locale)" alt="{{locale}}"><div>
+                    <!-- <a href="#" ng-click="changeLanguage(locale)">{{abbr}}</a> -->
+                </li>
+            </ul>
+        </li>
+
+<!--         <li ui-sref-active="active"><a ng-show="isLoggedIn" href="/" ng-click="logout()">{{ 'header.logout' | translate }}</a></li>
+        <li ui-sref-active="active"><a ng-hide="isLoggedIn" ui-sref="login">{{ 'header.login' | translate }}</a></li> -->
+        <!--<li><a ui-sref="registration">{{ 'header.registration' | translate }}</a></li>-->
+    </ul>
+</div>

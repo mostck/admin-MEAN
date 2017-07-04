@@ -1,0 +1,54 @@
+<div class="_schedule">
+    <div layout="column">
+        <section layout="row" layout-align="space-between" class="control-bar">
+            <div layout="row" layout-align="left center">
+                <md-input-container>
+                    <label>{{'schedule.from'| translate}}</label>
+                    <md-datepicker 
+                        ng-model="vm.options.fromDate"
+                        md-max-date="vm.options.toDate"
+                        md-open-on-focus
+                        md-hide-icons='triangle'
+                        aria-label="Start date range"></md-datepicker>
+                </md-input-container>
+                <md-input-container>
+                    <label>{{'schedule.to'| translate}}</label>
+                    <md-datepicker 
+                        ng-model="vm.options.toDate"
+                        md-min-date="vm.options.fromDate"
+                        md-open-on-focus
+                        md-hide-icons='triangle'
+                        aria-label="End date range"></md-datepicker>
+                </md-input-container>
+                <md-input-container class="scale-select">
+                    <label>{{'schedule.scale'| translate}}</label>
+                    <md-select 
+                        ng-model="vm.options.scale"
+                        aria-label="Scale">
+                            <md-option ng-repeat="scale in ['month', 'week', 'day']" ng-value="scale">{{scale | translate}}</md-option>
+                    </md-select>
+                    <div class="errors"></div>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-button aria-label="Refresh schedule" layout-align="right" class="md-fab md-mini md-raised" md-colors="{backgroundColor: 'siloblue-400', color: 'siloblue-50'}" ng-click="vm.refresh()">
+                    <i class="fa fa-refresh fa-2"></i>
+                </md-button>
+            </div>
+
+        </section>
+        <section  layout-margin="3px" layout="row" class="schedule-container">
+            <div flex class="chart-container">
+                <main-schedule
+                    ng-if="vm.projects && vm.projects.length"
+                    data="vm.projects"
+                    silos-length="vm.silosLength"
+                    options="vm.options">
+                </main-schedule>
+                <p class="text-center" ng-if="!(vm.projects && vm.projects.length)">
+                    {{ 'schedule.no_projects' | translate }} <a ui-sref="admin.projects.create">Create new project</a>
+                </p>
+            </div>
+        </section>
+    </div>
+</div>

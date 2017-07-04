@@ -1,0 +1,6 @@
+<div class="row">
+    <ul class="nav navbar-nav">
+        <!--<li ng-repeat="item in items" data-ng-class="{ active: $state.includes('{{ item.sref }}') }"><a ui-sref="{{ item.sref }}">{{ item.value | translate }}</a></li>-->
+        <li ng-repeat="item in items" ui-sref-active="active" ng-if="!item.permission"><a ui-sref="{{ item.sref }}">{{ item.value | translate }}</a></li>
+    </ul>
+</div>

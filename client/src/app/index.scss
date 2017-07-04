@@ -1,0 +1,227 @@
+$primaryColor: #397690;
+$secondaryColor: #ff5200;
+$tertiaryColor: #b8d1da;
+
+$primaryFontFamily: sans-serif;
+$secondaryFontFamily: 'Jockey One', sans-serif;
+// Font Sizes
+$suter-fontSize: 1rem !default;
+
+// Margin & Paddings
+$suter-gap: $suter-fontSize * 1.5 !default;
+
+$primaryShadow:  0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+
+
+@mixin border-shadow($line-width, $color) {
+  box-shadow:inset 0px 0px 0px $line-width $color;
+}
+
+@mixin border-shadow-right($line-width, $color) {
+  box-shadow: $line-width 0px 0px 0px $color;
+}
+
+@mixin border-shadow-left($line-width, $color) {
+  $line-width: -$line-width;
+  box-shadow: $line-width 0px 0px 0px  $color;
+}
+
+@mixin border-shadow-top($line-width, $color) {
+  $line-width: -$line-width;
+  box-shadow: 0px $line-width 0px 0px  $color;
+}
+
+@mixin border-shadow-bottom($line-width, $color) {
+  box-shadow: 0px $line-width 0px 0px $color;
+}
+
+html, body {
+  height: 100%;
+}
+
+html{
+  // background: url(../assets/images/bg.gif) top center no-repeat;
+  background-size: cover;
+}
+
+body {
+  color: $primaryColor;
+  font-family: $primaryFontFamily;
+  font-size: $suter-fontSize * 1.5;
+  width: calc(100vw - 15px);
+  background: transparent;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $secondaryFontFamily;
+}
+
+label {
+  margin-right: 10px;
+}
+
+a, a:hover{
+  color: $primaryColor;
+}
+
+._main {
+  min-height: calc(100% - 70px);
+  // height: auto!important;
+  // margin-bottom: -80px;
+}
+
+.textPrimaryColor {
+  color: $primaryColor;
+}
+
+.textSecondaryColor{
+  color: $secondaryColor;
+}
+
+.alert {
+  margin: 20px 0;
+}
+
+.round-box {
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: block;
+  background: $tertiaryColor;
+  text-align: center;
+  color: white;
+  &.statusOn {
+    background: $primaryColor;
+  }
+  &.alertYes {
+    background: $secondaryColor;
+  }
+}
+
+[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  filter: alpha(opacity=0);
+}
+
+md-input-container {
+  //input:-webkit-autofill, .md-input[type=password]:-webkit-autofill {
+  //  -webkit-box-shadow: 0 0 0 1000px rgb(250,250,250) inset;
+  //}
+  .md-input[type=password]:-webkit-autofill  ~ label:not(.md-no-float) {
+      transform: translate3d(0, 6px, 0) scale(0.75);
+      transition: transform cubic-bezier(0.25, 0.8, 0.25, 1) 0.4s, width cubic-bezier(0.25, 0.8, 0.25, 1) 0.4s;
+      width: calc((100% - 18px) / 0.75);
+    }
+  > .md-select {
+    margin-bottom: 24px;
+  }
+}
+
+.md-dialog-is-showing {
+  overflow: visible !important;
+}
+
+.md-button.md-raised:disabled,
+.md-button.md-fab:disabled {
+  background-color: rgba(0,0,0,0.12) !important;
+  color: rgba(0,0,0,0.38) !important;
+  cursor: default;
+}
+
+.fa-2 {
+  font-size: 1.5em;
+  line-height: 1.9em;
+}
+
+.md-toolbar-tools .fa-2 {
+  line-height: 1em;
+}
+
+.toast-success > .md-toast-content {
+  background-color: #689db0;
+}
+
+.toast-error > .md-toast-content {
+  background-color: #ff5200;
+}
+
+table.md-table th.md-column {
+  color: $primaryColor;
+}
+
+table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2), 
+table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+  padding: 0 30px 0 0;
+}
+
+table.md-table:not(.md-row-select) td.md-cell:first-child, 
+table.md-table:not(.md-row-select) th.md-column:first-child {
+  padding: 0 20px;
+}
+
+table.md-table th.md-column {
+  font-size: 15px;
+}
+
+table.md-table td.md-cell {
+  font-size: 14px;
+  color: $primaryColor;
+  .actions {
+    float: right;
+  }
+}
+
+table.md-table th.md-column.md-active,
+table.md-table th.md-column.md-active md-icon {
+  color: $secondaryColor;
+}
+
+.md-table-pagination {
+  .label, .md-select-value, md-select:focus:not([disabled]) .md-select-value {
+    font-size: 14px;
+    color: $primaryColor;
+  }
+  .md-button[disabled] {
+    opacity: 0.3;
+  }
+}
+
+
+.md-toast {
+z-index: 10000;
+}
+.md-top {
+  position: fixed;
+  top: 66px; // size of my navbar + 16px
+}
+
+.md-right {
+  position: fixed;
+  right: 16px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.main-logo {
+  margin-bottom: 40px;
+}
+
+
+// injector:scss
+// endinjector

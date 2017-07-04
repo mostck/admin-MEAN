@@ -1,0 +1,21 @@
+<div class="_main-schedule">
+    <div
+        gantt
+        from-date="ms.options.fromDate"
+        to-date="ms.options.toDate"
+        view-scale="ms.options.scale"
+        headers="ms.headers"
+        options="ms.options"
+        data="ms.chartData"
+        template-url="gantt.tmpl.html"
+        api="ms.registredApi">
+        <gantt-movable
+            enabled="!ms.options.readOnly"
+            allow-moving="false"
+            allow-resizing="false"
+            allow-row-switching="false"></gantt-movable>
+        <gantt-tooltips content="ms.options.tooltip.content"></gantt-tooltips>
+        <!-- <gantt-groups enabled="true" display="'promote'"></gantt-groups> -->
+        <gantt-tree></gantt-tree>
+    </div>
+</div>

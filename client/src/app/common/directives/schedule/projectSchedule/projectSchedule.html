@@ -1,0 +1,64 @@
+<div class="_project-schedule" layout="row">
+    <div class="available-devices" ng-class="{off: !ps.isOpenDevices}" >
+        <div layout="row">
+            
+            <h4>{{'schedule.storage' | translate}}</h4>
+            <md-button 
+                class="md-raised md-primary md-button"
+                ng-if="filtredDevices.length !== 0"
+                md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                ng-click="ps.autoFill(filtredDevices)"
+                ng-disabled="ps.autoFillDisabled">{{'button.autoFill' | translate}}</md-button>
+        </div>
+        <ul class="devices-list" >
+            <li class="device angular-animate" 
+                ng-repeat="device in ps.devices | orderBy: '-availability'| filter: ps.availableFilter as filtredDevices"
+                ng-dragstart="ps.dragStartHandler($event, device)"
+                ng-dragend="ps.dragEndHandler($event, $index, ps.devices)"
+                draggable="{{true}}"
+                ng-style="{'background-color': UTIL_COLORS[device.availability]}">
+                    <i class="fa" 
+                        ng-class="{
+                            'fa-battery-full fa-rotate-270': device.type == 'silo',
+                            'fa-fire': device.type == 'heater'
+                         }" 
+                        aria-hidden="true"></i>
+                    {{device.serial}}
+                </li>
+        </ul>
+        <div class="devices-list" ng-if="filtredDevices.length == 0">
+            <p>{{'schedule.no_devices' | translate}}</p>
+        </div>
+        <button type="button" aria-label="Show available devices" 
+            class="storage-switcher"
+            ng-click="ps.isOpenDevices = !ps.isOpenDevices"
+            >
+            <div class="vertical-line"></div>
+            <div class="switcher-label">
+                <i class="fa fa-chevron-{{ps.isOpenDevices ? 'up' : 'down'}}"></i>
+                <span>{{'schedule.storage' | translate}}</span>
+            </div>
+        </button>
+    </div>
+    <div flex class="chart-container">
+        <div
+            gantt
+            options="ps.options"
+            view-scale="ps.options.viewScale"
+            column-width="ps.options.columnWidth"
+            from-date="ps.options.fromDate"
+            to-date="ps.options.toDate"
+            data="ps.chartData"
+            template-url="gantt.tmpl.html"
+            api="ps.registredApi">
+            <gantt-movable enabled="!ps.options.readOnly" allow-row-switching="false"></gantt-movable>
+            <gantt-tooltips content="ps.options.tooltip.content"></gantt-tooltips>
+            <!-- <gantt-groups enabled="true" display="'promote'"></gantt-groups> -->
+            <gantt-tree></gantt-tree>
+
+        </div>
+<!--          <p class="text-center" ng-if="!(schedule.projects && schedule.projects.length)">
+            {{ 'schedule.no_projects' | translate }} <a ui-sref="admin.projects.create">Create new project</a>
+        </p> -->
+    </div>
+</div>

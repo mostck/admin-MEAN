@@ -1,0 +1,213 @@
+<div class="container">
+    <div layout="row" layout-margin="5px">
+        <div flex="20">
+            <img src="/assets/images/heater.gif" alt="heater" style="">
+        </div>
+        <div flex>
+            <md-table-container>
+                <h1>Heater</h1>
+                <table md-table>
+                    <tbody md-body>
+                        <tr md-row>
+                            <td md-cell>{{ 'device.serial' | translate }}</td>
+                            <td md-cell colspan="2">
+                                <span>{{vm.heater.serial}}</span>
+                            </td>
+                        </tr>
+                        <tr md-row>
+                            <td md-cell>{{ 'device.serialNr' | translate }}</td>
+                            <td md-cell colspan="2">
+                                <span>{{vm.heater.serialNr}}</span>
+                            </td>
+                        </tr>
+                        <tr md-row ng-if="!vm.permissions || vm.permissions.status.read">
+                            <td md-cell>{{ 'device.status' | translate }}:</td>
+                            <td md-cell>
+                                <span ng-if="vm.heater.status" class="round-box statusOn">{{ 'device.on' | translate }}</span>
+                                <span ng-if="!vm.heater.status" class="round-box">{{ 'device.off' | translate }}</span>
+                            </td>
+                            <td md-cell>
+                                <md-button class="md-raised"
+                                           md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                                           ng-click="vm.changeStatus()">{{'device.changeStatus' | translate}}</md-button>
+                            </td>
+                        </tr>
+                        <tr md-row ng-if="!vm.permissions || vm.permissions.alarm.read">
+                            <td md-cell>{{ 'device.alert' | translate }}:</td>
+                            <td md-cell>
+                                <span ng-if="vm.heater.alert" class="round-box alertYes">{{ 'device.yes' | translate }}</span>
+                                <span ng-if="!vm.heater.alert" class="round-box">{{ 'device.no' | translate }}</span>
+                            </td>
+                            <td md-cell>
+                                <md-button ng-if="!vm.heater.alert"
+                                           class="md-raised"
+                                           md-colors="{backgroundColor: 'siloorange-500', color: 'siloorange-50'}"
+                                           ng-click="vm.sendAlert()">{{ 'device.sendAlert' | translate }}</md-button>
+                                <md-button ng-if="vm.heater.alert"
+                                           class="md-raised"
+                                           md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                                           ng-click="vm.confirmAlert()">{{ 'device.confirmAlert' | translate }}</md-button>
+                            </td>
+                        </tr>
+                        <tr md-row ng-if="!vm.permissions || vm.permissions.operatingHours.read">
+                            <td md-cell>{{ 'device.operationHours' | translate }}:</td>
+                            <td md-cell>
+                                <input type="number" pattern="[0-9.]+" value="{{ vm.heater.operationHours }}" ng-model="vm.heater.operationHours">
+                            </td>
+                            <td md-cell>
+                                <md-button class="md-raised"
+                                           md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                                           ng-click="vm.changeOperationHours()">{{ 'device.changeOperationHours' | translate }}</md-button>
+                            </td>
+                        </tr>
+                        <tr md-row ng-if="!vm.permissions || vm.permissions.ashLevel.read">
+                            <td md-cell>{{ 'device.ashLevel' | translate }}:</td>
+                            <td md-cell colspan="2">
+                                <span ng-if="vm.heater.ashLevel">
+                                    {{  vm.heater.ashLevel | number:0 }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr md-row ng-if="!vm.permissions || vm.permissions.ashLevel.read">
+                            <td md-cell colspan="3">
+                                <div class="meter">
+                                    <span style="width: {{vm.heater.ashLevel}}%" ng-class="{ orange: vm.heater.ashLevel < 70 && vm.heater.ashLevel >= 50, red: vm.heater.ashLevel >= 70 }"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr md-row>
+                            <td md-cell>{{ 'device.serviceOperations' | translate }}:</td>
+                            <td md-cell>
+                                <span ng-if="vm.heater.operationsServiceStatus" class="round-box alertYes">{{ 'device.yes' | translate }}</span>
+                                <span ng-if="!vm.heater.operationsServiceStatus" class="round-box">{{ 'device.no' | translate }}</span>
+                            </td>
+                            <td md-cell>
+                                <!--<md-button ng-if="vm.heater.operationsServiceStatus != 1"-->
+                                <!--class="md-raised"-->
+                                <!--md-colors="{backgroundColor: 'siloorange-500', color: 'siloorange-50'}"-->
+                                <!--ng-click="vm.sendServiceOperations()">send Service Operations</md-button>-->
+                                <md-button ng-if="vm.heater.operationsServiceStatus"
+                                           class="md-raised"
+                                           md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                                           ng-click="vm.confirmServiceOperations()">confirm Service Operations</md-button>
+                            </td>
+                        </tr>
+                        <tr md-row>
+                            <td md-cell>{{ 'device.servicePeriodic' | translate }}:</td>
+                            <td md-cell>
+                                <span ng-if="vm.heater.periodicServiceStatus" class="round-box alertYes">{{ 'device.yes' | translate }}</span>
+                                <span ng-if="!vm.heater.periodicServiceStatus" class="round-box">{{ 'device.no' | translate }}</span>
+                            </td>
+                            <td md-cell>
+                                <!--<md-button ng-if="vm.heater.periodicServiceStatus != 1"-->
+                                           <!--class="md-raised"-->
+                                           <!--md-colors="{backgroundColor: 'siloorange-500', color: 'siloorange-50'}"-->
+                                           <!--ng-click="vm.sendServicePeriodic()">{{ 'device.sendServicePeriodic' | translate }}</md-button>-->
+                                <md-button ng-if="vm.heater.periodicServiceStatus"
+                                           class="md-raised"
+                                           md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                                           ng-click="vm.confirmServicePeriodic()">{{ 'device.confirmServicePeriodic' | translate }}</md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
+    </div>
+    <div layout="row" layout-margin="5px">
+        <div flex>
+            <h3 >Schedule</h3>
+            <device-schedule ng-if="vm.scheduleData && vm.scheduleData.length" schedule-data="vm.scheduleData"></device-schedule>
+            <p ng-if="!(vm.scheduleData && vm.scheduleData.length)">{{'schedule.notUsed' | translate}}</p>
+        </div>
+    </div>
+    <md-table-container layout="row" layout-margin="5px">
+        <div flex="50" ng-if="vm.heater.employee">
+            <h3>Employee:</h3>
+            <table md-table>
+                <tbody md-body>
+                <tr md-row>
+                    <td md-cell>{{ 'user.realName' | translate }}</td>
+                    <td md-cell><span >{{vm.heater.employee.realName}}</span></td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'user.phone' | translate }}</td>
+                    <td md-cell><span>{{vm.heater.employee.phone}}</span></td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'user.email' | translate }}</td>
+                    <td md-cell><span>{{vm.heater.employee.username}}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div flex="50" ng-if="vm.heater.object">
+            <h3>Object</h3>
+            <table md-table>
+                <tbody md-body>
+                <tr md-row>
+                    <td md-cell>{{ 'object.name' | translate }}</td>
+                    <td md-cell><span>{{vm.heater.object.name}}</span></td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'object.gps' | translate }}</td>
+                    <td md-cell><span>{{vm.heater.object.location.gps}}</span></td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'object.address' | translate }}</td>
+                    <td md-cell>
+                        <span>{{vm.heater.object.location.address.country}}</span>
+                        <span>{{vm.heater.object.location.address.town}}</span>
+                        <span>{{vm.heater.object.location.address.streetNr}}</span>
+                        <span>{{vm.heater.object.location.address.additionalLine}}</span>
+                        <span>{{vm.heater.object.location.address.zip}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-table-container>
+    <md-table-container layout="row" layout-margin="5px">
+        <div flex="50" ng-if="vm.heater.customer">
+            <h3>Customer</h3>
+            <table md-table>
+                <tbody md-body>
+                <tr md-row>
+                    <td md-cell>{{ 'customer.name' | translate }}</td>
+                    <td md-cell><span ng-if="vm.heater.customer">{{ vm.heater.customer.name }}</span></td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'customer.address' | translate }}</td>
+                    <td md-cell>
+                        <span>{{ vm.heater.customer.address.country }}</span>
+                        <span>{{ vm.heater.customer.address.town }}</span>
+                        <span>{{ vm.heater.customer.address.streetNr }}</span>
+                        <span>{{ vm.heater.customer.address.additionalLine }}</span>
+                        <span>{{ vm.heater.customer.address.zip }}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div flex="50" ng-if="vm.heater.pm">
+            <h3>Pm</h3>
+            <table md-table>
+                <tbody md-body>
+                <tr md-row>
+                    <td md-cell>{{ 'user.realName' | translate }}</td>
+                    <td md-cell>{{vm.heater.pm.realName}}</td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'user.phone' | translate }}</td>
+                    <td md-cell>{{vm.heater.pm.phone}}</td>
+                </tr>
+                <tr md-row>
+                    <td md-cell>{{ 'user.email' | translate }}</td>
+                    <td md-cell>{{vm.heater.pm.username}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-table-container>
+    <logbook records="vm.heater.logbook" device="vm.heater"></logbook>
+</div>

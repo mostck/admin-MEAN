@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="heaterSiloM2M">
+<head>
+    <meta charset="UTF-8">
+    <title>Heater/Silo-M2M</title>
+    <base href="/">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Jockey+One">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div ng-if="loading" layout="row" layout-sm="column" style="height: 100%;" layout-align="space-around center">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+    <div ng-if="!loading" class="_main">
+        <div ng-include="'app/header/header.html'"></div>
+        <div ui-view></div>
+    </div>
+    <div ng-if="!loading" ng-include="'app/footer/footer.html'"></div>
+</body>
+
+<script src="js/vendor.js" defer></script>
+<script src="js/index.js" defer></script>
+</html>

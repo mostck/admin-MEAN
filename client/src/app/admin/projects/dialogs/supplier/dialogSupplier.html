@@ -1,0 +1,31 @@
+<md-dialog aria-label="dialog">
+    <md-toolbar md-colors="{backgroundColor: 'siloblue-600', color: 'siloblue-50'}">
+        <div class="md-toolbar-tools">
+            <h2>
+                Select Supplier
+            </h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <i class="fa fa-remove fa-2" aria-label="Close dialog"></i></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="md-dialog-content">
+        <md-input-container class="md-block">
+            <label>{{ 'project.supplier' | translate }}</label>
+            <md-select ng-model="vm.supplier" ng-change="vm.changeHandler()">
+                <md-option value="">{{ 'project.none' | translate }}</md-option>
+                <md-option ng-repeat="supp in vm.suppliers" value="{{ supp._id }}">
+                    {{ supp.companyName || supp.username }}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button class="md-raised"
+                   ng-disabled="!vm.changed"
+                   md-colors="{backgroundColor: 'siloblue-700', color: 'siloblue-50'}"
+                   ng-click="vm.add()">{{ 'button.add' | translate }}</md-button>
+    </md-dialog-actions>
+</md-dialog>
+

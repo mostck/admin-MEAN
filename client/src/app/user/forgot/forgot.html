@@ -1,0 +1,29 @@
+<div class="_user">
+    <div class="container">
+        <div layout="row" layout-align="center" >
+            <img class="main-logo" src="assets/images/logo.png" alt="logo">
+        </div>
+        <div layout="row" layout-align="center">
+            <form name="forgotForm" layout="column" flex="100" flex-gt-sm="33">
+                <h3>{{ 'user.forgot_title' | translate }}</h3>
+                <md-input-container>
+                    <label>{{ 'user.username' | translate }}</label>
+                    <input type="email" ng-model="vm.username" ng-pattern="/^.+@.+\..+$/" required autofocus>
+                </md-input-container>
+                <md-button ng-disabled="forgotForm.$invalid"
+                           class="md-primary"
+                           ng-click="vm.forgotUser(vm.username)">{{ 'button.send' | translate }}</md-button>
+                <a ui-sref="login"><small>{{ 'user.back_to_login' | translate }}</small></a>
+
+            </form>
+        </div>
+        <div layout="row" layout-align="center" >
+            <div layout="column" flex="100" flex-gt-sm="33" ng-if="vm.warning" class="alert alert-warning">
+                <strong>{{ 'user.alert.warning_forgot' | translate }}</strong>
+            </div>
+            <div layout="column" flex="100" flex-gt-sm="33" ng-if="vm.success" class="alert alert-success">
+                <strong>{{ 'user.alert.success_forgot' | translate }}</strong>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div flex="none" class="device-icon">
+    <i class="fa fa-fire"></i>
+</div>
+<div flex class="task-content">{{task.model.title}}</div>
+<div flex="none" class="action-icon" ng-if="!scope.options.hideActions">
+    <i
+        ui-sref="admin.devices.update({id:task.model.data._id, type: task.model.type})" 
+        class="fa fa-gear update-device" title="edit">
+    </i>
+    <i
+        ng-if="!task.row._collapsed && !scope.options.readOnly"
+        ng-click="scope.schedule.removeRow(task.model.uuid)" 
+        class="fa fa-times-circle remove-device" title="remove">
+    </i>
+</div>

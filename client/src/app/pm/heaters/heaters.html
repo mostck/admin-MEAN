@@ -1,0 +1,53 @@
+<div class="container">
+    <div ng-if="vm.getAllHeaters && vm.getAllHeaters.length">
+        <md-table-container>
+            <table md-table>
+                <thead md-head md-order="vm.query.order">
+                <tr>
+                    <th md-column md-order-by="serial">{{ 'device.serial' | translate }}</th>
+                    <th md-column>{{ 'device.address' | translate }}</th>
+                    <th md-column ng-if="!vm.permissions || vm.permissions.status.read">{{ 'device.status' | translate }}</th>
+                    <th md-column ng-if="!vm.permissions || vm.permissions.alarm.read">{{ 'device.alert' | translate }}</th>
+                    <th md-column ng-if="!vm.permissions || vm.permissions.operatingHours.read" md-order-by="operationHours">{{ 'device.operationHours' | translate }}</th>
+                    <th md-column ng-if="!vm.permissions || vm.permissions.ashLevel.read">{{ 'device.ashLevel' | translate }}</th>
+                    <th md-column></th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr ng-repeat="heater in vm.getAllHeaters | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                    <td md-cell>{{heater.serial}}</td>
+                    <td md-cell>
+                        <span>{{heater.object.location.address.country}}</span>
+                        <span>{{heater.object.location.address.town}}</span>
+                        <span>{{heater.object.location.address.streetNr}}</span>
+                        <span>{{heater.object.location.address.zip}}</span>
+                    </td>
+                    <td md-cell ng-if="!vm.permissions || vm.permissions.status.read">
+                        <span ng-if="heater.status" class="round-box statusOn">{{ 'device.on' | translate }}</span>
+                        <span ng-if="!heater.status" class="round-box">{{ 'device.off' | translate }}</span>
+                    </td>
+                    <td md-cell ng-if="!vm.permissions || vm.permissions.alarm.read">
+                        <span ng-if="heater.alert" class="round-box alertYes">{{ 'device.yes' | translate }}</span>
+                        <span ng-if="!heater.alert" class="round-box">{{ 'device.no' | translate }}</span>
+                    </td>
+                    <td md-cell ng-if="!vm.permissions || vm.permissions.operatingHours.read">
+                        <span ng-if="heater.operationHours">{{ heater.operationHours }}</span>
+                    </td>
+                    <td md-cell ng-if="!vm.permissions || vm.permissions.ashLevel.read">
+                        <div class="meter">
+                            <span style="width: {{heater.ashLevel}}%" ng-class="{ orange: heater.ashLevel < 70 && heater.ashLevel >= 50, red: heater.ashLevel >= 70 }"></span>
+                        </div>
+                    </td>
+                    <td md-cell>
+                        <div class="actions">
+                            <md-button class="md-fab md-mini" md-colors="{backgroundColor: 'siloblue-300', color: 'siloblue-50'}" ng-click="vm.viewHeater(heater)" title="{{ 'button.view' | translate }}"><i class="fa fa-info fa-2"></i></md-button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.getAllHeaters.length }}" md-page-select></md-table-pagination>
+    </div>
+    <p ng-if="!(vm.getAllHeaters && vm.getAllHeaters.length)">{{'device.no_found' | translate}}</p>
+</div>
