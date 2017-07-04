@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var configSchema = new mongoose.Schema({
+  expiresIn: { type: Number, default: 2 },
   email: String,
   smtp: {
     host: String,

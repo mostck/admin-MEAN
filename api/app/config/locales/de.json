@@ -77,6 +77,7 @@
     "type": "Typ"
   },
   "config": {
+    "expiresIn": "session-timeout (stunden)",
     "email": "email",
     "smtp": "smtp",
     "host": "host",
@@ -211,6 +212,7 @@
     "archive": "Archiv",
     "yes": "Ja",
     "no": "Nein",
+    "none": "keiner",
     "toast": {
       "name_exists": "Projektname existiert bereits",
       "confirmEndProj": "Enddatum des Projektes wurde bestätigt",

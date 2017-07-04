@@ -4,7 +4,7 @@ module.exports = function(app) {
   app.use(function(req, res, next) {
     Config.findOne({})
       .exec(function (err, config) {
-        req.config = config;
+        req.globalConfig = config;
         next();
       });
   });

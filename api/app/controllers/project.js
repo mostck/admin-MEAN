@@ -39,7 +39,7 @@ ctrlProject.confirm = function(req, res) {
 };
 
 ctrlProject.prolong = function(req, res) {
-  Project.findOneAndUpdate({ '_id': req.body.project._id }, { 'reminderDate': null }, { new: true })
+  Project.findOneAndUpdate({ '_id': req.body.project._id }, { 'archive': true, 'reminderDate': null }, { new: true })
     .populate('objects.silos.silo')
     .populate('objects.silos.heaters.heater')
     .populate('employee')

@@ -32,7 +32,7 @@ userSchema.methods.validPassword = function(password) {
   return this.hash === hash;
 };
 
-userSchema.methods.generateJwt = function() {
+userSchema.methods.generateJwt = function(globalConfig) {
   return jwt.sign({
     _id: this._id,
     username: this.username,
@@ -42,7 +42,7 @@ userSchema.methods.generateJwt = function() {
     customer: this.customer,
     companyName: this.companyName,
     preferredLanguage: this.preferredLanguage
-  }, config.jwtSecret);
+  }, config.jwtSecret, { expiresIn: globalConfig.expiresIn*60*60 });
 };
 
 module.exports = mongoose.model('User', userSchema);

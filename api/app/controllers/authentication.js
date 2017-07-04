@@ -19,7 +19,7 @@ ctrlAuth.postRegister = function(req, res) {
 
   user.save(function(err) {
     var token;
-    token = user.generateJwt();
+    token = user.generateJwt(req.globalConfig);
     res.status(200).json({
       "token" : token
     });
@@ -40,7 +40,7 @@ ctrlAuth.postLogin = function(req, res) {
     }
 
     if(user){
-      token = user.generateJwt();
+      token = user.generateJwt(req.globalConfig);
       res.status(200).json({"token" : token});
     } else {
       res.status(401).json(info);

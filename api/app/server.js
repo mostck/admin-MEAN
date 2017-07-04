@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 require('./middleware/passport')(app);
 
-// require('./middleware/config')(app);
+require('./middleware/config')(app);
 
 require('./middleware/locale')(app);
 

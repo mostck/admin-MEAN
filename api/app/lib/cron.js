@@ -4,12 +4,14 @@ var Log = require('../models/log');
 var Heater = require('../models/heater');
 var Order = require('../models/order');
 var Project = require('../models/project');
+var Silo = require('../models/silo');
 
 var cron = {
   startCron: function() {
     new CronJob(config.cronTime, function() {
 
       // console.log('You will see this message every minute', new Date());
+      Silo.cron();
       Heater.cron();
       Order.cron();
       Project.cron();
