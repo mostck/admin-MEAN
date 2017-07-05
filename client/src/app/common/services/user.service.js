@@ -12,9 +12,7 @@
     $window,
     configService,
     $rootScope,
-    $deepStateRedirect,
-    adminCompanyService,
-    companyService
+    $deepStateRedirect
   ) {
 
     var saveToken = function (token) {
@@ -59,7 +57,6 @@
       }
     };
 
-
     var ping = function () {
       return $http.get(configService.getApiUri + '/ping')
         .then(function (response) {
@@ -73,11 +70,6 @@
           saveToken(response.data.token);
   
           const user = currentUser();
-
-          adminCompanyService.getCompany(user.companyId)
-            .then( company => {
-              companyService.setCompany(company);
-            });
 
           $rootScope.$broadcast('user.authenticate', true);
 
@@ -95,12 +87,11 @@
       $rootScope.$broadcast('user.authenticate', false);
     };
 
-    var register = function (username, email, password, companyId) {
+    var register = function (username, email, password) {
       return $http.post(configService.getApiUri + '/register', {
         username: username,
         email: email,
-        password: password,
-        companyId: companyId
+        password: password
       })
         .then(function (response) {
           return response.data;

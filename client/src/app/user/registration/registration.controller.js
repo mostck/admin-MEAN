@@ -5,18 +5,13 @@
     .module('heaterSiloM2M')
     .controller('UserRegistrationCtrl', UserRegistrationCtrl);
 
-  UserRegistrationCtrl.$inject = ['userService', 'adminCompanyService'];
+  UserRegistrationCtrl.$inject = ['userService'];
 
-  function UserRegistrationCtrl(userService, adminCompanyService) {
+  function UserRegistrationCtrl(userService) {
     var vm = this;
 
-    adminCompanyService.getAllCompanies()
-      .then( (companies) => {
-        vm.getAllCompanies = companies;
-      });
-
-    vm.registerUser = (username, email, password, companyId) => {
-      userService.register(username, email, password, companyId);
+    vm.registerUser = (username, email, password) => {
+      userService.register(username, email, password);
     };
 
   }

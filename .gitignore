@@ -1,0 +1,11 @@
+api/node_modules/
+api/uploads/*
+api/npm-debug.log
+client/npm-debug.log
+client/node_modules/
+client/bower_components/
+client/dist/
+client/coverage/
+client/.sass-cache/
+.DS_Store
+.idea/

@@ -22,7 +22,8 @@
                   ~[5,6].indexOf(roleId) ? 'pm.projects' :
                   roleId === 4 ? 'supplier.silos' : 'myAccount';
 
-          vm.redirectTo = state;
+          vm.redirectTo = 'admin';
+          // vm.redirectTo = state;
 
           $state.go(state);
         }).catch( () => {

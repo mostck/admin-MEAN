@@ -35,61 +35,6 @@
             $state.go('login');
           }
         })
-      .state('project', {
-        url: '/project/:id',
-        templateUrl: 'app/project/project.html',
-        params: {id: null},
-        controller: 'ProjectCtrl',
-        controllerAs: 'vm',
-        /* ngInject */
-        onEnter($stateParams, $state) {
-          if(!$stateParams.id) { $state.go('admin.projects.all'); }
-        },
-        resolve: {
-          /* ngInject */
-          project (adminProjectService, $stateParams, $state) {
-            return adminProjectService.get($stateParams.id)
-              .catch(() => { $state.go('404', {}, {location: "replace"}); });
-          }
-        }
-      })
-      .state('silo', {
-        url: '/silo/:id',
-        templateUrl: 'app/silo/silo.html',
-        params: {id: null},
-        controller: 'SiloCtrl',
-        controllerAs: 'vm',
-        /* ngInject */
-        onEnter($stateParams, $state) {
-          if(!$stateParams.id) { $state.go('admin.devices.all'); }
-        },
-        resolve: {
-          /* ngInject */
-          silo (adminDeviceService, $stateParams, $state) {
-            return adminDeviceService.getSilo($stateParams.id)
-              .catch(() => { $state.go('404', {}, {location: "replace"}); });
-          }
-        }
-      })
-      .state('heater', {
-        url: '/heater/:id',
-        templateUrl: 'app/heater/heater.html',
-        params: {id: null},
-        controller: 'HeaterCtrl',
-        controllerAs: 'vm',
-        /* ngInject */
-        onEnter($stateParams, $state) {
-          if(!$stateParams.id) { $state.go('admin.devices.all'); }
-        },
-        resolve: {
-          /* ngInject */
-          heater (adminDeviceService, $stateParams, $state) {
-            return adminDeviceService.getHeater($stateParams.id)
-              .catch(() => { $state.go('404', {}, {location: "replace"}); });
-          }
-        }
-      })
-
       .state('login', {
         url: '/login',
         params: {
@@ -116,12 +61,6 @@
         url: '/reset/:id',
         templateUrl: 'app/user/reset/reset.html',
         controller: 'UserResetCtrl',
-        controllerAs: 'vm'
-      })
-      .state('dataCollection', {
-        url: '/dataCollection',
-        templateUrl: 'app/dataCollection/dataCollection.html',
-        controller: 'DataCollectionCtrl',
         controllerAs: 'vm'
       });
 

@@ -22,6 +22,11 @@ module.exports = function(app) {
 
     if(token) {
       jwt.verify(token, config.jwtSecret, function (err, decode) {
+          if (!decode || !decode.username) {
+              var err = new Error('User not found');
+              err.status = 401;
+              return next(err);
+          }
         User.findOne({ username: decode.username }, '+salt +hash')
           .exec(function (err, user) {
             if (err) { return next(err); }

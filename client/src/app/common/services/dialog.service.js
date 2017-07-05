@@ -58,41 +58,10 @@
       controllerAs: 'vm'
     };
 
-    function dialogSupplier(supplier) {
-      return $mdDialog.show(angular.extend({}, dialogConfig, {
-        controller: 'AdminProjectDialogSupplierCtrl',
-        templateUrl: 'app/admin/projects/dialogs/supplier/dialogSupplier.html',
-        locals: { supplier }
-      }));
-    }
-
-    function objectDialog(object) {
-      return $mdDialog.show(angular.extend({}, dialogConfig, {
-        controller: 'ObjectDialogCtrl',
-        templateUrl: 'app/admin/projects/dialogs/object/objectDialog.html',
-        locals: { object }
-      }));
-    }
-
-    function cruRecordDialog(record, deviceId, state) {
-      return $mdDialog.show(angular.extend({}, dialogConfig, {
-        controller: 'cruRecordDialogCtrl',
-        templateUrl: 'app/cru/cruRecordDialog.html',
-        locals: {
-          record,
-          deviceId,
-          state
-        }
-      }));
-    }
-
     return {
       confirmRemoveItem     : confirmRemoveItem,
       confirmLeavePage      : confirmLeavePage,
-      confirmAdjustDuration : confirmAdjustDuration,
-      dialogSupplier        : dialogSupplier,
-      objectDialog          : objectDialog,
-      cruRecordDialog       : cruRecordDialog
+      confirmAdjustDuration : confirmAdjustDuration
     };
   }
 })();

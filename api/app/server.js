@@ -23,9 +23,8 @@ app.use(expressJwt({ secret: config.jwtSecret, userProperty: 'session' })
 
 app.use(cookieParser());
 
-require('./middleware/passport')(app);
-
 require('./middleware/locale')(app);
+require('./middleware/passport')(app);
 
 app.use('/api', routes);
 

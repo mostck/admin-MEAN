@@ -4,9 +4,9 @@
   angular.module('heaterSiloM2M')
     .controller('AdminUsersAllCtrl', AdminUsersAllCtrl);
 
-  AdminUsersAllCtrl.$inject = ['$state', 'configService', 'adminCompanyService', 'adminUserService', 'dialogService', 'userService'];
+  AdminUsersAllCtrl.$inject = ['$state', 'configService', 'adminUserService', 'dialogService', 'userService'];
 
-  function AdminUsersAllCtrl($state, configService, adminCompanyService, adminUserService, dialogService, userService) {
+  function AdminUsersAllCtrl($state, configService, adminUserService, dialogService, userService) {
     var vm = this;
     vm.userRoles = configService.userRoles;
 
@@ -20,18 +20,12 @@
 
     adminUserService.getAllUsers()
       .then((users) => {
-        adminCompanyService.getAllCompanies()
-          .then((companies) => {
-            users.forEach((user) => {
-              user.company = companies.find((comp) => {
-                return comp._id == user.companyId;
-              });
-              user.role = vm.userRoles.find((el) => {
-                return el.id == user.roleId;
-              });
-            });
-            vm.getAllUsers = users;
+        users.forEach((user) => {
+          user.role = vm.userRoles.find((el) => {
+            return el.id == user.roleId;
           });
+        });
+        vm.getAllUsers = users;
       });
 
     vm.remove = (user) => {

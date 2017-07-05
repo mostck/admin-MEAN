@@ -9,13 +9,9 @@
   function AdminUsersUpdateCtrl(
     $scope,
     $state,
-    $stateParams,
     configService,
     adminUserService,
-    adminCompanyService,
-    adminCustomerService,
-    userService,
-    user
+    userService
   ) {
     var vm = this;
 
@@ -25,27 +21,6 @@
     vm.currentUser = userService.currentUser();
 
     vm.userRoles = configService.userRoles;
-
-    vm.user = angular.extend({}, user, {
-      permissions: user.permissions || configService.permissionsEmployee
-    });
-
-    adminCompanyService.getAllCompanies()
-      .then(companies => {
-        vm.getAllCompanies = companies;
-      });
-
-    adminCustomerService.getAllCustomers()
-      .then( (customers) => {
-        vm.customers = customers;
-      });
-
-    adminUserService.getAllPmsAdmin()
-      .then(function (pms) {
-        vm.pmsAdmin = pms.filter((p) => {
-          return p._id != vm.userId;
-        });
-      });
 
     vm.save = (user) => {
       adminUserService.updateUser(user)

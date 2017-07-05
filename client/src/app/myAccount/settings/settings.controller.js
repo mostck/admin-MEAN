@@ -5,10 +5,10 @@
     .module('heaterSiloM2M')
     .controller('SettingsCtrl', SettingsCtrl);
 
-  SettingsCtrl.$inject = ['$stateParams', 'adminUserService', 'userService', 'Toast', 'menuService'];
+  SettingsCtrl.$inject = ['adminUserService', 'userService', 'Toast'];
 
   /* @ngInject */
-  function SettingsCtrl($stateParams, adminUserService, userService, Toast, menuService) {
+  function SettingsCtrl(adminUserService, userService, Toast) {
     var vm = this;
     vm.title = 'SettingsCtrl';
 

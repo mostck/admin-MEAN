@@ -2,8 +2,8 @@ module.exports = {
   jwtSecret: '$a&F1m3377E]W:+',
   clientHost: 'http://localhost:8080/',
   port: 3000,
-  mongodb: 'mongodb://0.0.0.0/node-api-template',
-  expiresIn: { type: Number, default: 2 },
+  mongodb: 'mongodb://0.0.0.0/node-tpl-api',
+  expiresIn: 2,
   email: "unknown@gmail.com",
   smtp: {
     host: "smtp.mailgun.org",

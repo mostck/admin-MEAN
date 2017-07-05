@@ -12,8 +12,6 @@
     configService,
     menuService,
     $deepStateRedirect,
-    adminCompanyService,
-    companyService,
     $mdDateLocale
   ) {
     $rootScope.loading = true;
@@ -22,10 +20,6 @@
     setMdDateLocale(localeService.get());
 
     let currentUser = userService.currentUser();
-    if (currentUser && currentUser.companyId) {
-      adminCompanyService.getCompany(currentUser.companyId)
-        .then(companyService.setCompany);
-    }
 
     $rootScope.$on('$stateChangeStart', stateChangeStartHandler);
     
@@ -41,7 +35,8 @@
                   ~[5,6].indexOf(roleId) ? 'pm.projects' :
                   roleId === 4 ? 'supplier.silos' : 'myAccount';
 
-        $state.go(state);
+        // $state.go(state);
+        $state.go('admin');
       }
 
       if (toState.defaultSubstate) {
