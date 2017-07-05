@@ -25,7 +25,7 @@ module.exports = function(app) {
         User.findOne({ username: decode.username }, '+salt +hash')
           .exec(function (err, user) {
             if (err) { return next(err); }
-            if (!user || user.roleId != decode.roleId || (user.permissions && decode.permissions && JSON.stringify(user.permissions) != JSON.stringify(decode.permissions))) {
+            if (!user || user.roleId != decode.roleId) {
               var err = new Error('User not found');
               err.status = 401;
               return next(err);

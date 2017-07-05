@@ -7,15 +7,10 @@ var addressSchema = require('../models/address').schema;
 
 var userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
-  companyId: Schema.Types.ObjectId,
-  roleId: { type: Number, default: 3 },
-  permissions: Object,
-  customer: { type: Schema.Types.ObjectId, ref: 'Customer' },
+  roleId: { type: Number, default: 2 },
   realName: String,
   phone: String,
   address: addressSchema,
-  companyName: {type: String, unique: true},
-  preferredLanguage: String,
   hash: { type: String, select: false },
   salt: { type: String, select: false },
   resetPasswordToken: { type: String, select: false },
@@ -32,17 +27,12 @@ userSchema.methods.validPassword = function(password) {
   return this.hash === hash;
 };
 
-userSchema.methods.generateJwt = function(globalConfig) {
+userSchema.methods.generateJwt = function(expiresIn) {
   return jwt.sign({
     _id: this._id,
     username: this.username,
-    companyId: this.companyId,
-    roleId: this.roleId,
-    permissions: this.permissions,
-    customer: this.customer,
-    companyName: this.companyName,
-    preferredLanguage: this.preferredLanguage
-  }, config.jwtSecret, { expiresIn: globalConfig.expiresIn*60*60 });
+    roleId: this.roleId
+  }, config.jwtSecret, { expiresIn: expiresIn*60*60 });
 };
 
 module.exports = mongoose.model('User', userSchema);

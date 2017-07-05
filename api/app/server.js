@@ -9,8 +9,6 @@ var cookieParser = require('cookie-parser');
 var routes = require('./routes');
 var config = require('./config/index');
 
-var cron = require('./lib/cron');
-
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '2mb' }));
@@ -27,11 +25,7 @@ app.use(cookieParser());
 
 require('./middleware/passport')(app);
 
-require('./middleware/config')(app);
-
 require('./middleware/locale')(app);
-
-require('./middleware/logger')(app);
 
 app.use('/api', routes);
 
@@ -39,17 +33,14 @@ require('./middleware/error')(app);
 
 connect()
   .on('error', console.log)
-  // .on('disconnected', connect)
   .once('open', listen);
 
 function listen () {
   app.listen(config.port);
   console.log('Express app started on port ' + config.port);
-  cron.startCron();
 }
 
 function connect () {
-  // var options = { server: { socketOptions: { keepAlive: 1 } } };
   mongoose.Promise = global.Promise;
   return mongoose.connect(config.mongodb).connection;
 }

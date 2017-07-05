@@ -14,12 +14,11 @@ ctrlAuth.getRegister = function(req, res) {
 ctrlAuth.postRegister = function(req, res) {
   var user = new User();
   user.username = req.body.username;
-  user.companyId = req.body.companyId;
   user.setPassword(req.body.password);
 
   user.save(function(err) {
     var token;
-    token = user.generateJwt(req.globalConfig);
+    token = user.generateJwt(config.expiresIn);
     res.status(200).json({
       "token" : token
     });
@@ -40,7 +39,7 @@ ctrlAuth.postLogin = function(req, res) {
     }
 
     if(user){
-      token = user.generateJwt(req.globalConfig);
+      token = user.generateJwt(config.expiresIn);
       res.status(200).json({"token" : token});
     } else {
       res.status(401).json(info);

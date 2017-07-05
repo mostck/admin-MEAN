@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = function(app) {
   i18n.configure({
-    locales: ['en', 'de'],
+    locales: ['en'],
     directory: path.join(__dirname, '../config/locales'),
     defaultLocale: 'en',
     register: global,

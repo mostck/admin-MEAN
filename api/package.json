@@ -1,5 +1,5 @@
 {
-  "name": "heater-silo-m2m",
+  "name": "noda-api-template",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -15,7 +15,6 @@
     "async": "^2.0.1",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
-    "cron": "^1.1.1",
     "express": "^4.14.0",
     "express-jwt": "^5.0.0",
     "express-session": "^1.14.1",
@@ -25,14 +24,10 @@
     "mongoose": "^4.6.1",
     "multer": "^1.2.0",
     "nodemailer": "^2.6.4",
-    "nodemailer-mailgun-transport": "^1.2.2",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "moment": "^2.15.2",
     "nodemon": "^1.11.0"
   }
 }
